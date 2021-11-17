@@ -8,8 +8,19 @@
 import SwiftUI
 
 struct ChatView: View {
+    
+    @State var messageText: String = ""
+    
     var body: some View {
-        Text("ChatView")
+        VStack {
+            ScrollView {
+                ForEach(0..<15) { _ in
+                    Text("Chat Bubble..")
+                }
+            }
+            MessageInputView(messageText: $messageText)
+                .padding()
+        }
     }
 }
 
