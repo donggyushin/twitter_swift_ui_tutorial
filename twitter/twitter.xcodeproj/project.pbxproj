@@ -24,6 +24,8 @@
 		70F728BD27454A03000A3672 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F728BC27454A03000A3672 /* ChatView.swift */; };
 		70F728BF27454BAD000A3672 /* NewMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F728BE27454BAD000A3672 /* NewMessageView.swift */; };
 		70F728C127454DF3000A3672 /* MessageInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F728C027454DF3000A3672 /* MessageInputView.swift */; };
+		70F728C32745531E000A3672 /* MyChatBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F728C22745531E000A3672 /* MyChatBubble.swift */; };
+		70F728C6274554BA000A3672 /* OtherChatBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F728C5274554BA000A3672 /* OtherChatBubble.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,8 @@
 		70F728BC27454A03000A3672 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		70F728BE27454BAD000A3672 /* NewMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageView.swift; sourceTree = "<group>"; };
 		70F728C027454DF3000A3672 /* MessageInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageInputView.swift; sourceTree = "<group>"; };
+		70F728C22745531E000A3672 /* MyChatBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChatBubble.swift; sourceTree = "<group>"; };
+		70F728C5274554BA000A3672 /* OtherChatBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherChatBubble.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,10 +219,20 @@
 		70F728BB274549FE000A3672 /* chat */ = {
 			isa = PBXGroup;
 			children = (
+				70F728C4274554AD000A3672 /* Bubble */,
 				70F728BC27454A03000A3672 /* ChatView.swift */,
 				70F728C027454DF3000A3672 /* MessageInputView.swift */,
 			);
 			path = chat;
+			sourceTree = "<group>";
+		};
+		70F728C4274554AD000A3672 /* Bubble */ = {
+			isa = PBXGroup;
+			children = (
+				70F728C22745531E000A3672 /* MyChatBubble.swift */,
+				70F728C5274554BA000A3672 /* OtherChatBubble.swift */,
+			);
+			path = Bubble;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -352,12 +366,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				70F728AE27453840000A3672 /* SearchView.swift in Sources */,
+				70F728C32745531E000A3672 /* MyChatBubble.swift in Sources */,
 				7028235227450D6100A81745 /* ContentView.swift in Sources */,
 				70F728BD27454A03000A3672 /* ChatView.swift in Sources */,
 				7028237D27451A0500A81745 /* FeedView.swift in Sources */,
 				7028235027450D6100A81745 /* twitterApp.swift in Sources */,
 				70F728C127454DF3000A3672 /* MessageInputView.swift in Sources */,
 				702632CF2745292B009B97E9 /* TweetCell.swift in Sources */,
+				70F728C6274554BA000A3672 /* OtherChatBubble.swift in Sources */,
 				70F728B0274538DC000A3672 /* SearchBar.swift in Sources */,
 				70F728B227453CFC000A3672 /* UserCell.swift in Sources */,
 				70F728BF27454BAD000A3672 /* NewMessageView.swift in Sources */,

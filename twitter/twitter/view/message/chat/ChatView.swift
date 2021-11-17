@@ -15,7 +15,7 @@ struct ChatView: View {
         VStack {
             ScrollView {
                 ForEach(0..<15) { _ in
-                    Text("Chat Bubble..")
+                    OtherChatBubble()
                 }
             }
             MessageInputView(messageText: $messageText)
