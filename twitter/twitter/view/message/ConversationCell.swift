@@ -20,9 +20,11 @@ struct ConversationCell: View {
                 Text("Batman")
                     .font(.system(size: 14, weight: .semibold))
                 
-                Text("Long text to see what happens when I do this.")
+                Text("Long text to see what happens when I do this. Long text to see what happens")
                     .font(.system(size: 14))
             }
+            .foregroundColor(.black)
+            .multilineTextAlignment(.leading)
             
             Spacer()
         }
