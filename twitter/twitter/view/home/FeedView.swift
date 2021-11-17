@@ -14,6 +14,7 @@ struct FeedView: View {
                 VStack {
                     ForEach(0..<100) {_ in
                         TweetCell()
+                            .padding(.horizontal)
                             .padding(.bottom)
                     }
                 }

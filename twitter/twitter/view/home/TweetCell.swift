@@ -16,7 +16,7 @@ struct TweetCell: View {
                     .scaledToFit()
                     .frame(width: 56, height: 56)
                     .clipShape(Circle())
-                    .padding(.leading)
+                    
                 
                 VStack(alignment: .leading, spacing: 4) {
                     HStack {
@@ -29,7 +29,6 @@ struct TweetCell: View {
                     }
                     
                     Text("It's not who I am underneath, but what I do that defines me")
-                        .padding(.trailing)
                 }
             }
             
@@ -59,8 +58,8 @@ struct TweetCell: View {
                 }
             }
             .padding(.top, 10)
-            .padding(.horizontal, 30)
             .foregroundColor(.gray)
+            .padding(.horizontal)
         }
     }
 }
