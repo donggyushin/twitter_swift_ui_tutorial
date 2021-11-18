@@ -14,6 +14,7 @@ struct SearchView: View {
     var body: some View {
         ScrollView {
             SearchBar(text: $searchTest)
+                .padding(.top)
             VStack {
                 ForEach(0..<20) { _ in
                     UserCell()
