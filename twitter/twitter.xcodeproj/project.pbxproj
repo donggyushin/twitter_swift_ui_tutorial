@@ -16,6 +16,7 @@
 		7028236B27450D6100A81745 /* twitterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7028236A27450D6100A81745 /* twitterUITests.swift */; };
 		7028236D27450D6200A81745 /* twitterUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7028236C27450D6200A81745 /* twitterUITestsLaunchTests.swift */; };
 		7028237D27451A0500A81745 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7028237C27451A0500A81745 /* FeedView.swift */; };
+		706BF95A27464B35002277F8 /* FilterButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706BF95927464B35002277F8 /* FilterButtonsView.swift */; };
 		7072FF9D2746302B0074DBD1 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7072FF9C2746302B0074DBD1 /* Message.swift */; };
 		70B47E7527463E2000E8ED0F /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B47E7427463E2000E8ED0F /* ProfileView.swift */; };
 		70B47E7727463EE200E8ED0F /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B47E7627463EE200E8ED0F /* ProfileHeaderView.swift */; };
@@ -63,6 +64,7 @@
 		7028236A27450D6100A81745 /* twitterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = twitterUITests.swift; sourceTree = "<group>"; };
 		7028236C27450D6200A81745 /* twitterUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = twitterUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		7028237C27451A0500A81745 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
+		706BF95927464B35002277F8 /* FilterButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterButtonsView.swift; sourceTree = "<group>"; };
 		7072FF9C2746302B0074DBD1 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		70B47E7427463E2000E8ED0F /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		70B47E7627463EE200E8ED0F /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
@@ -200,9 +202,18 @@
 			path = model;
 			sourceTree = "<group>";
 		};
+		706BF95827464B28002277F8 /* filter_buttons */ = {
+			isa = PBXGroup;
+			children = (
+				706BF95927464B35002277F8 /* FilterButtonsView.swift */,
+			);
+			path = filter_buttons;
+			sourceTree = "<group>";
+		};
 		70B47E7327463E1700E8ED0F /* profile */ = {
 			isa = PBXGroup;
 			children = (
+				706BF95827464B28002277F8 /* filter_buttons */,
 				70BF12892746452100A21B98 /* header */,
 				70B47E7427463E2000E8ED0F /* ProfileView.swift */,
 			);
@@ -430,6 +441,7 @@
 				7072FF9D2746302B0074DBD1 /* Message.swift in Sources */,
 				70F728B527454331000A3672 /* ConversationListView.swift in Sources */,
 				70BF128C2746454B00A21B98 /* ProfileHeaderActionButtonsView.swift in Sources */,
+				706BF95A27464B35002277F8 /* FilterButtonsView.swift in Sources */,
 				70F728B727454346000A3672 /* ConversationCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

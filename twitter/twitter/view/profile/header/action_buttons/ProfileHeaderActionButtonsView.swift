@@ -10,6 +10,7 @@ import SwiftUI
 struct ProfileHeaderActionButtonsView: View {
     
     @Binding var isMe: Bool
+    private let screenWidth = UIScreen.main.bounds.size.width
     
     var body: some View {
         
@@ -18,19 +19,19 @@ struct ProfileHeaderActionButtonsView: View {
                 
             } label: {
                 Text("Edit Profile")
-                    .frame(minWidth: 300, idealWidth: 360, minHeight: 40, idealHeight: 40)
+                    .frame(width: screenWidth - 60, height: 40)
                     .background(Color.blue)
                     .foregroundColor(.white)
                     .cornerRadius(20)
                     .shadow(radius: 5)
             }
         } else {
-            HStack(spacing: 20) {
+            HStack(spacing: 10) {
                 Button {
                     
                 } label: {
                     Text("Following")
-                        .frame(minWidth: 150, idealWidth: 180, minHeight: 40, idealHeight: 40)
+                        .frame(width: (screenWidth - 60) / 2, height: 40)
                         .background(Color.blue)
                         .foregroundColor(.white)
                         .cornerRadius(20)
@@ -41,7 +42,7 @@ struct ProfileHeaderActionButtonsView: View {
                     
                 } label: {
                     Text("Message")
-                        .frame(minWidth: 150, idealWidth: 180, minHeight: 40, idealHeight: 40)
+                        .frame(width: (screenWidth - 60) / 2, height: 40)
                         .background(Color.purple)
                         .foregroundColor(.white)
                         .cornerRadius(20)
