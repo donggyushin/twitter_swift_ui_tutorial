@@ -19,21 +19,24 @@ struct ChatBubbleShape: Shape {
 }
 
 struct MyChatBubble: View {
+    
+    let message: MockMessage
+    
     var body: some View {
         HStack {
             Spacer()
-            Text("Hellow There!")
+            Text(message.message)
                 .padding(10)
                 .background(Color.blue)
                 .foregroundColor(.white)
                 .clipShape(ChatBubbleShape(isFromCurrentUser: true))
-                .padding(.trailing, 5)
+                .padding(.trailing, 10)
         }
     }
 }
 
 struct MyChatBubble_Previews: PreviewProvider {
     static var previews: some View {
-        MyChatBubble()
+        MyChatBubble(message: .init(id: 0, imageName: "batman", message: "hellow", isFromCurrentUser: true))
     }
 }

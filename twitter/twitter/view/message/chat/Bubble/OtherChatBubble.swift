@@ -8,15 +8,18 @@
 import SwiftUI
 
 struct OtherChatBubble: View {
+    
+    let message: MockMessage
+    
     var body: some View {
         HStack(alignment: .bottom) {
-            Image("batman")
+            Image(message.imageName)
                 .resizable()
                 .frame(width: 40, height: 40)
                 .scaledToFill()
                 .clipShape(Circle())
             
-            Text("Hi There.")
+            Text(message.message)
                 .padding(10)
                 .background(Color(UIColor.systemGray6))
                 .clipShape(ChatBubbleShape(isFromCurrentUser: false))
@@ -29,6 +32,6 @@ struct OtherChatBubble: View {
 
 struct OtherChatBubble_Previews: PreviewProvider {
     static var previews: some View {
-        OtherChatBubble()
+        OtherChatBubble(message: .init(id: 0, imageName: "spiderman", message: "hey", isFromCurrentUser: false))
     }
 }
