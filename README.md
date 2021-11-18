@@ -28,4 +28,6 @@ API를 Firestore 및 데이터 모델과 통합하는 작업, 유저를 팔로�
 - Follow/Unfollow users from profile
 - Logging in and logging out
 
-[유료 강의 보러가기](https://www.udemy.com/course/twitter-swiftui-clone-ios-14-swift-5-firestore-mvvm/)
+# Screen shots
+
+![twitter](https://user-images.githubusercontent.com/34573243/142372436-cdd59edc-fd67-40b5-ac77-cd9753b4dc4a.png)
