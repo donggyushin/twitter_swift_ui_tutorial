@@ -18,6 +18,7 @@ struct FeedView: View {
                             .padding(.bottom)
                     }
                 }
+                .padding(.top)
             }
             Button {
                 print("nothing")

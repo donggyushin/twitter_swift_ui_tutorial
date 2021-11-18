@@ -8,13 +8,34 @@
 import SwiftUI
 
 struct NewMessageView: View {
+    @State var searchTest: String = ""
+    @Binding var isShowingNewMessageView: Bool
+    @Binding var startChat: Bool
+    
     var body: some View {
-        Text("New Message View")
+        ScrollView {
+            SearchBar(text: $searchTest)
+                .padding(.top)
+            VStack {
+                ForEach(0..<20) { _ in
+                    Button {
+                        self.isShowingNewMessageView.toggle()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            self.startChat.toggle()
+                        }
+                    } label: {
+                        UserCell()
+                    }
+                    .padding(.horizontal)
+                }
+            }
+            .padding(.vertical)
+        }
     }
 }
 
 struct NewMessageView_Previews: PreviewProvider {
     static var previews: some View {
-        NewMessageView()
+        NewMessageView(isShowingNewMessageView: .constant(true), startChat: .constant(false))
     }
 }
