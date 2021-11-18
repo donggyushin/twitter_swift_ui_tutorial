@@ -29,8 +29,6 @@ struct ContentView: View {
                         Text("Messages")
                     }
             }
-            .navigationTitle("Home")
-            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }

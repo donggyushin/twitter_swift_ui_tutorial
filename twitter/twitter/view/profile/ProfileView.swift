@@ -12,6 +12,8 @@ struct ProfileView: View {
         ScrollView {
             ProfileHeaderView()
                 .padding(.top)
+            
+                .navigationTitle("Spider Man")
         }
     }
 }
