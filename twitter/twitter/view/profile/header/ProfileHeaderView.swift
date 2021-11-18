@@ -11,6 +11,7 @@ struct ProfileHeaderView: View {
     
     @State var followers: Int = 12
     @State var followings: Int = 0
+    @State var isMe: Bool = false
     
     var body: some View {
         VStack {
@@ -39,6 +40,9 @@ struct ProfileHeaderView: View {
                 FollowingFollwerView(text: .constant("Followings"), number: $followings)
             }
             .padding(.top, 20)
+            
+            ProfileHeaderActionButtonsView(isMe: $isMe)
+                .padding(.top)
         }
     }
 }
