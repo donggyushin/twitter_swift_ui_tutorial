@@ -10,11 +10,12 @@ import SwiftUI
 struct NewTweetView: View {
     
     @Binding var isShowingNewTweetView: Bool
+    @State var textEditorText: String = ""
     
     var body: some View {
         NavigationView {
             VStack {
-                HStack() {
+                HStack(alignment: .top) {
                     Image("batman")
                         .resizable()
                         .frame(width: 56, height: 56)
@@ -22,9 +23,7 @@ struct NewTweetView: View {
                         .scaledToFill()
                         .padding(.leading)
                     
-                    Text("Hello World!")
-                        .foregroundColor(.gray)
-                    
+                    TextAreaView(placeHolder: "What's happening?", text: $textEditorText)
                     Spacer()
                 }
                 
