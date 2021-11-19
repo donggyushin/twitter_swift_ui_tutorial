@@ -36,8 +36,6 @@ struct FeedView: View {
             .foregroundColor(Color.white)
             .clipShape(Circle())
             .padding()
-            .navigationTitle("Home")
-            .navigationBarTitleDisplayMode(.inline)
             .fullScreenCover(isPresented: $isShowingNewTweetView) {
                 NewTweetView(isShowingNewTweetView: $isShowingNewTweetView)
             }

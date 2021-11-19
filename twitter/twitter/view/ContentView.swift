@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State var shouldLogin = true
+    
     var body: some View {
         NavigationView {
             TabView {
@@ -16,19 +19,22 @@ struct ContentView: View {
                         Image(systemName: "house")
                         Text("Home")
                     }
-                
+
                 SearchView()
                     .tabItem {
                         Image(systemName: "magnifyingglass")
                         Text("Search")
                     }
-                
+
                 ConversationListView()
                     .tabItem {
                         Image(systemName: "envelope")
                         Text("Messages")
                     }
             }
+
+            .navigationTitle("Home")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
