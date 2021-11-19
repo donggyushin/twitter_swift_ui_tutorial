@@ -30,6 +30,7 @@ API를 Firestore 및 데이터 모델과 통합하는 작업, 유저를 팔로�
 
 # Screen shots
 
-![twitter_clone](https://user-images.githubusercontent.com/34573243/142620203-76a25388-bbcc-48d4-b439-22488a8f292e.png)
+![twitter_clone](https://user-images.githubusercontent.com/34573243/142665281-b17e81d2-99f6-4734-a531-c2a1b9c36953.png)
+
 
 
