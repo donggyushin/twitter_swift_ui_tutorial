@@ -9,6 +9,8 @@ import SwiftUI
 
 struct NewTweetView: View {
     
+    @Binding var isShowingNewTweetView: Bool
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -31,7 +33,7 @@ struct NewTweetView: View {
             
             .navigationBarItems(
                 leading: Button(action: {
-                
+                    self.isShowingNewTweetView.toggle()
             }, label: {
                 Text("Cancel")
             }), trailing: Button(action: {
@@ -50,6 +52,6 @@ struct NewTweetView: View {
 
 struct NewTweetView_Previews: PreviewProvider {
     static var previews: some View {
-        NewTweetView()
+        NewTweetView(isShowingNewTweetView: .constant(true))
     }
 }
