@@ -9,10 +9,12 @@ import SwiftUI
 
 struct RegistrationView: View {
     
+    @State var profileImage: UIImage? = nil 
     @State var fullName: String = ""
     @State var email: String = ""
     @State var userName: String = ""
     @State var password: String = ""
+    @State var showImagePicker = false
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
@@ -21,14 +23,21 @@ struct RegistrationView: View {
     var body: some View {
         ZStack {
             VStack {
-                Image("plus_photo")
-                    .resizable()
-                    .renderingMode(.template)
-                    .foregroundColor(.white)
-                    .scaledToFit()
-                    .frame(width: 120)
-                    .padding(.bottom, 20)
-                
+                Button {
+                    showImagePicker.toggle()
+                } label: {
+                    Image("plus_photo")
+                        .resizable()
+                        .renderingMode(.template)
+                        .foregroundColor(.white)
+                        .scaledToFit()
+                        .frame(width: 120)
+                        .padding(.bottom, 20)
+                }
+                .sheet(isPresented: $showImagePicker) { } content: {
+                    ImagePicker(profileImage: $profileImage)
+                }
+
                 TextFieldView(placeHolder: "Full Name", image_name: "person", text: $fullName)
                     .padding(.horizontal)
                 
