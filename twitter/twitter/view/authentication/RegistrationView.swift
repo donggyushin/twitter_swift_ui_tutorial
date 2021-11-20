@@ -9,7 +9,8 @@ import SwiftUI
 
 struct RegistrationView: View {
     
-    @State var profileImage: UIImage? = nil 
+    @State var selectedUiImage: UIImage? = nil
+    @State var selectedImage: Image? = nil
     @State var fullName: String = ""
     @State var email: String = ""
     @State var userName: String = ""
@@ -20,22 +21,39 @@ struct RegistrationView: View {
     
     let screenWidth = UIScreen.main.bounds.width
     
+    func configImage() {
+        guard let selectedUiImage = selectedUiImage else { return }
+        selectedImage = .init(uiImage: selectedUiImage)
+    }
+    
     var body: some View {
         ZStack {
             VStack {
                 Button {
                     showImagePicker.toggle()
                 } label: {
-                    Image("plus_photo")
-                        .resizable()
-                        .renderingMode(.template)
-                        .foregroundColor(.white)
-                        .scaledToFit()
-                        .frame(width: 120)
-                        .padding(.bottom, 20)
+                    if let selectedImage = self.selectedImage {
+                        selectedImage
+                            .resizable()
+                            .scaledToFit()
+                            .clipShape(Circle())
+                            .frame(width: 120)
+                            .padding(.bottom, 20)
+                    } else {
+                        Image("plus_photo")
+                            .resizable()
+                            .renderingMode(.template)
+                            .foregroundColor(.white)
+                            .scaledToFit()
+                            .frame(width: 120)
+                            .padding(.bottom, 20)
+                    }
+                     
                 }
-                .sheet(isPresented: $showImagePicker) { } content: {
-                    ImagePicker(profileImage: $profileImage)
+                .sheet(isPresented: $showImagePicker) {
+                    configImage()
+                } content: {
+                    ImagePicker(uiimage: $selectedUiImage)
                 }
 
                 TextFieldView(placeHolder: "Full Name", image_name: "person", text: $fullName)
@@ -69,7 +87,6 @@ struct RegistrationView: View {
                         .foregroundColor(.white)
                 }
             }
-            
                 .background(background_color)
         }
     }
