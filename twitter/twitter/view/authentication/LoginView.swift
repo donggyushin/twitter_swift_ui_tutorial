@@ -15,50 +15,50 @@ struct LoginView: View {
     let screenWidth = UIScreen.main.bounds.width
     
     var body: some View {
-        ZStack {
-            VStack {
-                Image("twitter-logo")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 120)
-                   
-                TextFieldView(placeHolder: "Email", image_name: "envelope", text: $email)
-                    .padding()
-                
-                PasswordTextFieldView(placeHolder: "Password", text: $password)
-                    .padding(.horizontal)
-                
-                HStack {
-                    Spacer()
+        NavigationView {
+            ZStack {
+                VStack {
+                    Image("twitter-logo")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 120)
+                       
+                    TextFieldView(placeHolder: "Email", image_name: "envelope", text: $email)
+                        .padding()
+                    
+                    PasswordTextFieldView(placeHolder: "Password", text: $password)
+                        .padding(.horizontal)
+                    
+                    HStack {
+                        Spacer()
+                        Button {
+                            
+                        } label: {
+                            Text("Forgot Password?")
+                                .foregroundColor(.white)
+                                .font(.footnote)
+                        }
+                        .padding()
+                    }
+                    
                     Button {
                         
                     } label: {
-                        Text("Forgot Password?")
-                            .foregroundColor(.white)
-                            .font(.footnote)
+                        Text("Sign In")
+                            .frame(width: screenWidth - 40, height: 40)
+                            .background(.white)
+                            .cornerRadius(20)
                     }
-                    .padding()
-                }
-                
-                Button {
-                    
-                } label: {
-                    Text("Sign In")
-                        .frame(width: screenWidth - 40, height: 40)
-                        .background(.white)
-                        .cornerRadius(20)
-                }
 
-                Spacer()
-                
-                Button {
+                    Spacer()
                     
-                } label: {
-                    Text("Don't have an account?")
-                        .foregroundColor(.white)
+                    NavigationLink(destination: RegistrationView().navigationBarBackButtonHidden(true)) {
+                        Text("Don't have an account?")
+                            .foregroundColor(.white)
+                    }
                 }
+                .background(background_color)
             }
-            .background(background_color)
         }
     }
 }

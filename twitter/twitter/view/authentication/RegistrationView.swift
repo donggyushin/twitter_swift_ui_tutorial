@@ -14,6 +14,8 @@ struct RegistrationView: View {
     @State var userName: String = ""
     @State var password: String = ""
     
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
     let screenWidth = UIScreen.main.bounds.width
     
     var body: some View {
@@ -49,7 +51,7 @@ struct RegistrationView: View {
                 Spacer()
                 
                 Button {
-                    
+                    presentationMode.wrappedValue.dismiss()
                 } label: {
                     Text("Already have an account")
                         .foregroundColor(.white)
