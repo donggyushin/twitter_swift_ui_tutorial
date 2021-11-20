@@ -21,10 +21,13 @@ struct RegistrationView: View {
     var body: some View {
         ZStack {
             VStack {
-                Image("twitter-logo")
+                Image("plus_photo")
                     .resizable()
+                    .renderingMode(.template)
+                    .foregroundColor(.white)
                     .scaledToFit()
                     .frame(width: 120)
+                    .padding(.bottom, 20)
                 
                 TextFieldView(placeHolder: "Full Name", image_name: "person", text: $fullName)
                     .padding(.horizontal)
