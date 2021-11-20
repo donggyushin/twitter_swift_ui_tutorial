@@ -25,7 +25,7 @@ struct LoginView: View {
                 TextFieldView(placeHolder: "Email", image_name: "envelope", text: $email)
                     .padding()
                 
-                TextFieldView(placeHolder: "Password", image_name: "lock", text: $password)
+                PasswordTextFieldView(placeHolder: "Password", text: $password)
                     .padding(.horizontal)
                 
                 HStack {
@@ -55,7 +55,7 @@ struct LoginView: View {
                 Button {
                     
                 } label: {
-                    Text("Not have an account?")
+                    Text("Don't have an account?")
                         .foregroundColor(.white)
                 }
             }
