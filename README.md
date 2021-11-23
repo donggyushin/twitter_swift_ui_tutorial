@@ -1,7 +1,7 @@
-[twitter_swift_ui_tutorial](#twitter_swift_ui_tutorial)
-[무엇을 배울 것인가?](#무엇을_배울_것인가?)
-[무엇을 구현 할 것인가?](#무엇을_구현_할_것인가?)
-[Screen shots](#Screen_shots)
+[twitter_swift_ui_tutorial](#twitter_swift_ui_tutorial)  
+[무엇을 배울 것인가?](#무엇을_배울_것인가?)  
+[무엇을 구현 할 것인가?](#무엇을_구현_할_것인가?)  
+[Screen shots](#Screen_shots)  
 [끄적끄적](#끄적끄적)
 
 > [@State](#@State)
