@@ -56,11 +56,11 @@ struct RegistrationView: View {
                 } content: {
                     ImagePicker(uiimage: $selectedUiImage)
                 }
-
-                TextFieldView(placeHolder: "Full Name", image_name: "person", text: $fullName)
-                    .padding(.horizontal)
                 
                 TextFieldView(placeHolder: "Email", image_name: "envelope", text: $email)
+                    .padding(.horizontal)
+
+                TextFieldView(placeHolder: "Full Name", image_name: "person", text: $fullName)
                     .padding(.horizontal)
                 
                 TextFieldView(placeHolder: "User Name", image_name: "person", text: $userName)
