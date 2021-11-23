@@ -1,3 +1,13 @@
+[twitter_swift_ui_tutorial](#twitter_swift_ui_tutorial)
+[무엇을 배울 것인가?](#무엇을_배울_것인가?)
+[무엇을 구현 할 것인가?](#무엇을_구현_할_것인가?)
+[Screen shots](#Screen_shots)
+[끄적끄적](#끄적끄적)
+
+> [@State](#@State)
+> [@ObservedObject](#@ObservedObject)
+> [@EnvironmentObject](#@EnvironmentObject)
+
 # twitter_swift_ui_tutorial
 
 MVVM 아키텍쳐와 Swift UI를 이용해서 Twitter의 MVP 버전 앱을 제작하는 방법을 배운다.
@@ -50,6 +60,6 @@ API를 Firestore 및 데이터 모델과 통합하는 작업, 유저를 팔로�
 - @ObservedObject와 함께 사용하는 타입은 ObservableObject프로토콜을 따라야함.
 - observed object가 데이터가 변경되었음을 view에 알리는 방법은 여러가지가 있지만 가장 쉬운 방법은 @Published 프로퍼티 래퍼를 사용하는 것. = SwiftUI에 view reload를 트리거.
 
-## EnvironmentObject
+## @EnvironmentObject
 
 - 모든 view가 읽을 수 있는 shared data
