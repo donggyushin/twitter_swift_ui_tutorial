@@ -3,9 +3,9 @@
 3. [무엇을 구현 할 것인가?](#무엇을_구현_할_것인가?)
 4. [Screen shots](#Screen_shots)
 5. [끄적끄적](#끄적끄적)
-   - [@State](#@State)
-   - [@ObservedObject](#@ObservedObject)
-   - [@EnvironmentObject](#@EnvironmentObject)
+   - [State](#State)
+   - [ObservedObject](#ObservedObject)
+   - [EnvironmentObject](#EnvironmentObject)
 
 # twitter_swift_ui_tutorial
 
@@ -43,14 +43,14 @@ API를 Firestore 및 데이터 모델과 통합하는 작업, 유저를 팔로�
 
 # 끄적끄적
 
-## @State
+## State
 
 - SwiftUI는 state로 선언한 모든 프로퍼티의 스토리지를 관리.
 - state 값이 변경되면 view가 appearance를 invalidates하고 body를 다시 계산(recomputes)
 - view의 body에서만 state프로퍼티에 접근 할 것. 따라서 view의 클라이언트에서 state에 접근하지 못하도록 state프로퍼티를 private으로 선언할 것. (state는 특정 view에 속하고, view 외부에서 "절대" 사용되지 않은 간단한 프로퍼티에 적합 -> 해당 상태가 절대로 escape되지 않도록 설계되었다는 것을 강조하기 위해 private으로 표시하는 것이 중요함.)
 - @State를 앞에 추가하면 SwiftUI가 자동으로 변경사항을 observe하고 해당 state를 사용하는 view부분을 업데이트
 
-## @ObservedObject
+## ObservedObject
 
 @State같은 경우에는 특정 view에서만 사용하는 프로퍼티였다면 ObservedObject는
 
@@ -59,6 +59,6 @@ API를 Firestore 및 데이터 모델과 통합하는 작업, 유저를 팔로�
 - @ObservedObject와 함께 사용하는 타입은 ObservableObject프로토콜을 따라야함.
 - observed object가 데이터가 변경되었음을 view에 알리는 방법은 여러가지가 있지만 가장 쉬운 방법은 @Published 프로퍼티 래퍼를 사용하는 것. = SwiftUI에 view reload를 트리거.
 
-## @EnvironmentObject
+## EnvironmentObject
 
 - 모든 view가 읽을 수 있는 shared data
