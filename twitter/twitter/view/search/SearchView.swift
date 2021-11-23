@@ -13,20 +13,23 @@ struct SearchView: View {
     
     var body: some View {
         ScrollView {
-            SearchBar(text: $searchTest)
-                .padding(.top)
             VStack {
-                ForEach(0..<20) { _ in
-                    NavigationLink {
-                        ProfileView()
-                    } label: {
-                        UserCell()
-                            .padding(.horizontal)
+                SearchBar(text: $searchTest)
+                    .padding(.top)
+                VStack {
+                    ForEach(0..<20) { _ in
+                        NavigationLink {
+                            ProfileView()
+                        } label: {
+                            UserCell()
+                                .padding(.horizontal)
+                        }
                     }
                 }
+                .padding(.vertical)
             }
-            .padding(.vertical)
         }
+        .padding(.top, 1)
     }
 }
 

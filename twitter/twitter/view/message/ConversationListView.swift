@@ -19,15 +19,18 @@ struct ConversationListView: View {
             } label: {}
 
             ScrollView {
-                ForEach(0..<20) { _ in
-                    NavigationLink {
-                        ChatView()
-                    } label: {
-                        ConversationCell()
-                            .padding()
+                VStack {
+                    ForEach(0..<20) { _ in
+                        NavigationLink {
+                            ChatView()
+                        } label: {
+                            ConversationCell()
+                                .padding()
+                        }
                     }
                 }
             }
+            .padding(.top, 1)
             
             Button {
                 self.isShowingNewMessageView.toggle()

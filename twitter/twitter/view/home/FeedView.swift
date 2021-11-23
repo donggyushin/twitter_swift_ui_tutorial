@@ -24,6 +24,8 @@ struct FeedView: View {
                 }
                 .padding(.top)
             }
+            .padding(.top, 1)
+            
             Button {
 //                self.isShowingNewTweetView.toggle()
                 viewModel.signOut()

@@ -23,7 +23,7 @@ struct ConversationCell: View {
                 Text("Long text to see what happens when I do this. Long text to see what happens")
                     .font(.system(size: 14))
             }
-            .foregroundColor(.black)
+            .foregroundColor(.primary)
             .multilineTextAlignment(.leading)
             
             Spacer()
