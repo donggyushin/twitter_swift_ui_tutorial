@@ -10,8 +10,29 @@ import UIKit
 import Firebase
 
 class AuthViewModel: ObservableObject {
-    func login() {
-        
+    
+    @Published var user: User?
+    @Published var isAuthenticating = false
+    @Published var error: Error?
+    
+    init() {
+        self.user = Auth.auth().currentUser
+    }
+    
+    func signOut() {
+        self.user = nil
+        try? Auth.auth().signOut()
+    }
+    
+    func login(email: String, password: String) {
+        Auth.auth().signIn(withEmail: email, password: password) { result, error in
+            if let error = error {
+                self.error = error
+                return
+            }
+            
+            print("DEBUG: Successfully logged in..")
+        }
     }
     
     func registerUser(email: String, password: String, username: String, fullname: String, profileImage: UIImage) {
@@ -21,7 +42,7 @@ class AuthViewModel: ObservableObject {
         let storageRef = Storage.storage().reference().child(filename)
         storageRef.putData(imageData, metadata: nil) { _, error in
             if let error = error {
-                print(error.localizedDescription)
+                self.error = error
                 return
             }
             
@@ -31,7 +52,7 @@ class AuthViewModel: ObservableObject {
                 
                 Auth.auth().createUser(withEmail: email, password: password) { result, error in
                     if let error = error {
-                        print(error.localizedDescription)
+                        self.error = error
                         return
                     }
                     
@@ -47,7 +68,7 @@ class AuthViewModel: ObservableObject {
                     
                     Firestore.firestore().collection("users").document(user.uid).setData(data) { error in
                         if let error = error {
-                            print(error.localizedDescription)
+                            self.error = error
                             return
                         }
                         

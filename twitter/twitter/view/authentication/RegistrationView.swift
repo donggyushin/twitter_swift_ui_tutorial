@@ -18,7 +18,7 @@ struct RegistrationView: View {
     @State var showImagePicker = false
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @ObservedObject var viewModel: AuthViewModel = .init()
+    @EnvironmentObject var viewModel: AuthViewModel
     
     let screenWidth = UIScreen.main.bounds.width
     

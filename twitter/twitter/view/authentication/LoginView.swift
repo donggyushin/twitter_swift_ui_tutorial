@@ -13,6 +13,7 @@ struct LoginView: View {
     @State var email: String = ""
     @State var password: String = ""
     let screenWidth = UIScreen.main.bounds.width
+    @EnvironmentObject var viewModel: AuthViewModel
     
     var body: some View {
         NavigationView {
@@ -42,7 +43,7 @@ struct LoginView: View {
                     }
                     
                     Button {
-                        
+                        viewModel.login(email: email, password: password)
                     } label: {
                         Text("Sign In")
                             .frame(width: screenWidth - 40, height: 40)
