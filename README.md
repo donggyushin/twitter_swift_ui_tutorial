@@ -5,8 +5,9 @@
 [끄적끄적](#끄적끄적)
 
 > [@State](#@State)
-> [@ObservedObject](#@ObservedObject)
-> [@EnvironmentObject](#@EnvironmentObject)
+
+- [@ObservedObject](#@ObservedObject)
+- [@EnvironmentObject](#@EnvironmentObject)
 
 # twitter_swift_ui_tutorial
 
