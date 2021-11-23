@@ -33,6 +33,7 @@
 		7028237D27451A0500A81745 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7028237C27451A0500A81745 /* FeedView.swift */; };
 		703F22BE2748BE6700A3629C /* PasswordTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703F22BD2748BE6700A3629C /* PasswordTextFieldView.swift */; };
 		703F22C02748BF4C00A3629C /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703F22BF2748BF4C00A3629C /* RegistrationView.swift */; };
+		7057476F274D09A1003AE7F1 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7057476E274D09A1003AE7F1 /* AuthViewModel.swift */; };
 		706BF95A27464B35002277F8 /* FilterButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706BF95927464B35002277F8 /* FilterButtonsView.swift */; };
 		7072FF9D2746302B0074DBD1 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7072FF9C2746302B0074DBD1 /* Message.swift */; };
 		70B47E7527463E2000E8ED0F /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B47E7427463E2000E8ED0F /* ProfileView.swift */; };
@@ -90,6 +91,7 @@
 		7028237C27451A0500A81745 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		703F22BD2748BE6700A3629C /* PasswordTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextFieldView.swift; sourceTree = "<group>"; };
 		703F22BF2748BF4C00A3629C /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		7057476E274D09A1003AE7F1 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		706BF95927464B35002277F8 /* FilterButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterButtonsView.swift; sourceTree = "<group>"; };
 		7072FF9C2746302B0074DBD1 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		70B47E7427463E2000E8ED0F /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 		7028237A2745186200A81745 /* viewModel */ = {
 			isa = PBXGroup;
 			children = (
+				7057476E274D09A1003AE7F1 /* AuthViewModel.swift */,
 			);
 			path = viewModel;
 			sourceTree = "<group>";
@@ -546,6 +549,7 @@
 				70B47E7A27463F3300E8ED0F /* FollowingFollwerView.swift in Sources */,
 				7072FF9D2746302B0074DBD1 /* Message.swift in Sources */,
 				70F728B527454331000A3672 /* ConversationListView.swift in Sources */,
+				7057476F274D09A1003AE7F1 /* AuthViewModel.swift in Sources */,
 				70BF128C2746454B00A21B98 /* ProfileHeaderActionButtonsView.swift in Sources */,
 				703F22BE2748BE6700A3629C /* PasswordTextFieldView.swift in Sources */,
 				706BF95A27464B35002277F8 /* FilterButtonsView.swift in Sources */,

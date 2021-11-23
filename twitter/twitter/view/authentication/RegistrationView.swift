@@ -18,6 +18,7 @@ struct RegistrationView: View {
     @State var showImagePicker = false
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @ObservedObject var viewModel: AuthViewModel = .init()
     
     let screenWidth = UIScreen.main.bounds.width
     
@@ -69,7 +70,8 @@ struct RegistrationView: View {
                     .padding(.horizontal)
                 
                 Button {
-                    
+                    guard let selectedUiImage = selectedUiImage else { return }
+                    viewModel.registerUser(email: email, password: password, username: userName, fullname: fullName, profileImage: selectedUiImage)
                 } label: {
                     Text("Sign Up")
                         .frame(width: screenWidth - 40, height: 40)
