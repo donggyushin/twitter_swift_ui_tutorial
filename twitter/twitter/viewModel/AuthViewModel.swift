@@ -30,8 +30,7 @@ class AuthViewModel: ObservableObject {
                 self.error = error
                 return
             }
-            
-            print("DEBUG: Successfully logged in..")
+            self.user = result?.user
         }
     }
     
@@ -61,18 +60,17 @@ class AuthViewModel: ObservableObject {
                     let data: [String: Any] = [
                         "email": email,
                         "fullname": fullname,
-                        "username": username,
+                        "username": username.lowercased(),
                         "profileImageUrl": profileImageUrl,
                         "uid": user.uid
                     ]
                     
                     Firestore.firestore().collection("users").document(user.uid).setData(data) { error in
+                        self.user = user
                         if let error = error {
                             self.error = error
                             return
                         }
-                        
-                        print("DEBUG: Successfully uploaded user data...")
                     }
                     
                 }
