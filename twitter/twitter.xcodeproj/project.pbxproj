@@ -22,6 +22,7 @@
 		70055510274BBD1D0009994F /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 7005550F274BBD1D0009994F /* FirebaseStorage */; };
 		70055512274BBD1D0009994F /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 70055511274BBD1D0009994F /* FirebaseStorageCombine-Community */; };
 		70055514274BBD1D0009994F /* FirebaseStorageSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 70055513274BBD1D0009994F /* FirebaseStorageSwift-Beta */; };
+		7005E73F274FB07C00FDE7EC /* TwitterUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7005E73E274FB07C00FDE7EC /* TwitterUser.swift */; };
 		702632CF2745292B009B97E9 /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702632CE2745292B009B97E9 /* TweetCell.swift */; };
 		7028235027450D6100A81745 /* twitterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7028234F27450D6100A81745 /* twitterApp.swift */; };
 		7028235227450D6100A81745 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7028235127450D6100A81745 /* ContentView.swift */; };
@@ -78,6 +79,7 @@
 
 /* Begin PBXFileReference section */
 		700554F6274BBC290009994F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7005E73E274FB07C00FDE7EC /* TwitterUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterUser.swift; sourceTree = "<group>"; };
 		702632CE2745292B009B97E9 /* TweetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
 		7028234C27450D6100A81745 /* twitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = twitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7028234F27450D6100A81745 /* twitterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = twitterApp.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				7072FF9C2746302B0074DBD1 /* Message.swift */,
+				7005E73E274FB07C00FDE7EC /* TwitterUser.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -540,6 +543,7 @@
 				70FA36602748100900AD322E /* colors.swift in Sources */,
 				70F728C32745531E000A3672 /* MyChatBubble.swift in Sources */,
 				7028235227450D6100A81745 /* ContentView.swift in Sources */,
+				7005E73F274FB07C00FDE7EC /* TwitterUser.swift in Sources */,
 				70F728BD27454A03000A3672 /* ChatView.swift in Sources */,
 				70FA365D274809CE00AD322E /* LoginView.swift in Sources */,
 				70F065312747C86300412FE3 /* TextAreaView.swift in Sources */,

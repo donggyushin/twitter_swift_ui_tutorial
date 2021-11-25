@@ -16,7 +16,7 @@ class AuthViewModel: ObservableObject {
     @Published var error: Error?
     
     init() {
-        self.user = Auth.auth().currentUser
+        self.user = Auth.auth().currentUser    
     }
     
     func signOut() {
