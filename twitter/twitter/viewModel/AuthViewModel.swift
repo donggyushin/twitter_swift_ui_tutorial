@@ -11,16 +11,16 @@ import Firebase
 
 class AuthViewModel: ObservableObject {
     
-    @Published var user: User?
+    @Published var userSession: User?
     @Published var isAuthenticating = false
     @Published var error: Error?
     
     init() {
-        self.user = Auth.auth().currentUser    
+        self.userSession = Auth.auth().currentUser    
     }
     
     func signOut() {
-        self.user = nil
+        self.userSession = nil
         try? Auth.auth().signOut()
     }
     
@@ -30,7 +30,7 @@ class AuthViewModel: ObservableObject {
                 self.error = error
                 return
             }
-            self.user = result?.user
+            self.userSession = result?.user
         }
     }
     
@@ -66,7 +66,7 @@ class AuthViewModel: ObservableObject {
                     ]
                     
                     Firestore.firestore().collection("users").document(user.uid).setData(data) { error in
-                        self.user = user
+                        self.userSession = user
                         if let error = error {
                             self.error = error
                             return
