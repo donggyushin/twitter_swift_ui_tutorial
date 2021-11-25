@@ -14,9 +14,11 @@ class AuthViewModel: ObservableObject {
     @Published var userSession: User?
     @Published var isAuthenticating = false
     @Published var error: Error?
+    @Published var user: TwitterUser?
     
     init() {
-        self.userSession = Auth.auth().currentUser    
+        self.userSession = Auth.auth().currentUser
+        fetchUser()
     }
     
     func signOut() {
@@ -77,8 +79,15 @@ class AuthViewModel: ObservableObject {
                 
             }
         }
-        
-        
-        
+    }
+    
+    func fetchUser() {
+        guard let uid = userSession?.uid else { return }
+        Firestore.firestore().collection("users").document(uid).getDocument { snapshot, _ in
+            guard let data = snapshot?.data() else { return }
+            let user: TwitterUser = .init(dictionary: data)
+            self.user = user
+            print("DEBUG: user: \(user.fullname)")
+        }
     }
 }
