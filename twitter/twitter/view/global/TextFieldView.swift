@@ -30,6 +30,7 @@ struct TextFieldView: View {
                 
                 TextField("", text: $text)
                     .foregroundColor(.white)
+                    .textInputAutocapitalization(.never)
             }
             .padding()
             .background(Color(white: 1, opacity: 0.2))
