@@ -11,20 +11,21 @@ struct NewMessageView: View {
     @State var searchTest: String = ""
     @Binding var isShowingNewMessageView: Bool
     @Binding var startChat: Bool
+    @ObservedObject var viewModel = SearchViewModel()
     
     var body: some View {
         ScrollView {
             SearchBar(text: $searchTest)
                 .padding(.top)
             VStack {
-                ForEach(0..<20) { _ in
+                ForEach(viewModel.users) { user in
                     Button {
                         self.isShowingNewMessageView.toggle()
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                             self.startChat.toggle()
                         }
                     } label: {
-                        UserCell()
+                        UserCell(user: user)
                     }
                     .padding(.horizontal)
                 }
