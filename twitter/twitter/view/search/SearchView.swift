@@ -20,7 +20,7 @@ struct SearchView: View {
                 VStack {
                     ForEach(viewModel.users) { user in
                         NavigationLink {
-                            ProfileView()
+                            ProfileView(user: user)
                         } label: {
                             UserCell(user: user)
                                 .padding(.horizontal)

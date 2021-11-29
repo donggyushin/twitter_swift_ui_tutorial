@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ProfileHeaderActionButtonsView: View {
     
-    @Binding var isMe: Bool
+    let isMe: Bool
     private let screenWidth = UIScreen.main.bounds.size.width
     
     var body: some View {
@@ -57,6 +57,6 @@ struct ProfileHeaderActionButtonsView: View {
 
 struct ProfileHeaderActionButtonsView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileHeaderActionButtonsView(isMe: .constant(false))
+        ProfileHeaderActionButtonsView(isMe: false)
     }
 }

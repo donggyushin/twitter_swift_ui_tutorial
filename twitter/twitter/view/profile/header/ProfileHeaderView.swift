@@ -6,27 +6,29 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct ProfileHeaderView: View {
     
+    let user: TwitterUser
+    
     @State var followers: Int = 12
     @State var followings: Int = 0
-    @State var isMe: Bool = false
     
     var body: some View {
         VStack {
-            Image("spiderman")
+            KFImage(.init(string: user.profileImageUrl))
                 .resizable()
                 .frame(width: 120, height: 120)
                 .scaledToFill()
                 .clipShape(Circle())
                 .shadow(color: .black, radius: 10, x: 0, y: 0)
             
-            Text("Tom Holand")
+            Text(user.fullname)
                 .font(.system(size: 16, weight: .semibold))
                 .padding(.top, 8)
             
-            Text("@Spider man")
+            Text("@\(user.username)")
                 .font(.footnote)
                 .foregroundColor(.gray)
             
@@ -41,7 +43,7 @@ struct ProfileHeaderView: View {
             }
             .padding(.top, 20)
             
-            ProfileHeaderActionButtonsView(isMe: $isMe)
+            ProfileHeaderActionButtonsView(isMe: user.isMe)
                 .padding(.top)
         }
     }
@@ -49,6 +51,10 @@ struct ProfileHeaderView: View {
 
 struct ProfileHeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileHeaderView()
+        ProfileHeaderView(user: .init(dictionary: ["email": "test2@gmail.com",
+                                                   "fullname": "Shin donggyu",
+                                                   "profileImageUrl": "https://firebasestorage.googleapis.com:443/v0/b/twitter-swift-ui-754b7.appspot.com/o/9CACC08F-0341-4FBD-B7E6-C40BAE58A83B?alt=media&token=3ed1e3aa-41f6-4c89-a750-37ca42d2266b",
+                                                   "uid": "asd",
+                                                   "username": "Spider Man"]))
     }
 }

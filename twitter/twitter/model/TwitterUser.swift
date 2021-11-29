@@ -5,7 +5,7 @@
 //  Created by 신동규 on 2021/11/25.
 //
 
-import Foundation
+import Firebase
 
 struct TwitterUser: Identifiable {
     let id: String
@@ -13,6 +13,7 @@ struct TwitterUser: Identifiable {
     let profileImageUrl: String
     let fullname: String
     let email: String
+    var isMe: Bool { return Auth.auth().currentUser?.uid == self.id }
     
     init(dictionary: [String: Any]) {
         self.id = dictionary["uid"] as? String ?? ""
