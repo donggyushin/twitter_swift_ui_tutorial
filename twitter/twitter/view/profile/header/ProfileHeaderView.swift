@@ -9,26 +9,25 @@ import SwiftUI
 import Kingfisher
 
 struct ProfileHeaderView: View {
-    
-    let user: TwitterUser
-    
     @State var followers: Int = 12
     @State var followings: Int = 0
+    let viewModel: ProfileViewModel
+    @Binding var isFollowed: Bool
     
     var body: some View {
         VStack {
-            KFImage(.init(string: user.profileImageUrl))
+            KFImage(.init(string: viewModel.user.profileImageUrl))
                 .resizable()
                 .frame(width: 120, height: 120)
                 .scaledToFill()
                 .clipShape(Circle())
                 .shadow(color: .black, radius: 10, x: 0, y: 0)
             
-            Text(user.fullname)
+            Text(viewModel.user.fullname)
                 .font(.system(size: 16, weight: .semibold))
                 .padding(.top, 8)
             
-            Text("@\(user.username)")
+            Text("@\(viewModel.user.username)")
                 .font(.footnote)
                 .foregroundColor(.gray)
             
@@ -43,7 +42,7 @@ struct ProfileHeaderView: View {
             }
             .padding(.top, 20)
             
-            ProfileHeaderActionButtonsView(isMe: user.isMe)
+            ProfileHeaderActionButtonsView(viewModel: viewModel, isFollowed: $isFollowed)
                 .padding(.top)
         }
     }
@@ -51,10 +50,10 @@ struct ProfileHeaderView: View {
 
 struct ProfileHeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileHeaderView(user: .init(dictionary: ["email": "test2@gmail.com",
-                                                   "fullname": "Shin donggyu",
-                                                   "profileImageUrl": "https://firebasestorage.googleapis.com:443/v0/b/twitter-swift-ui-754b7.appspot.com/o/9CACC08F-0341-4FBD-B7E6-C40BAE58A83B?alt=media&token=3ed1e3aa-41f6-4c89-a750-37ca42d2266b",
-                                                   "uid": "asd",
-                                                   "username": "Spider Man"]))
+        ProfileHeaderView(viewModel: .init(user: .init(dictionary: ["email": "test2@gmail.com",
+                                                                    "fullname": "Shin donggyu",
+                                                                    "profileImageUrl": "https://firebasestorage.googleapis.com:443/v0/b/twitter-swift-ui-754b7.appspot.com/o/9CACC08F-0341-4FBD-B7E6-C40BAE58A83B?alt=media&token=3ed1e3aa-41f6-4c89-a750-37ca42d2266b",
+                                                                    "uid": "asd",
+                                                                    "username": "Spider Man"])), isFollowed: .constant(false))
     }
 }
