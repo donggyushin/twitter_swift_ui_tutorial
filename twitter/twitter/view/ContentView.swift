@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct ContentView: View {
     @EnvironmentObject var viewModel: AuthViewModel
@@ -33,8 +34,22 @@ struct ContentView: View {
                                 Text("Messages")
                             }
                     }
-
                     .navigationTitle("Home")
+                    .toolbar(content: {
+                        ToolbarItem(placement: .navigationBarLeading) {
+                            Button {
+                                viewModel.signOut()
+                            } label: {
+                                KFImage(.init(string: viewModel.user?.profileImageUrl ?? ""))
+                                    .resizable()
+                                    .scaledToFill()
+                                    .clipped()
+                                    .frame(width: 32, height: 32)
+                                    .clipShape(Circle())
+                            }
+
+                        }
+                    })
                     .navigationBarTitleDisplayMode(.inline)
                 }
             } else {
