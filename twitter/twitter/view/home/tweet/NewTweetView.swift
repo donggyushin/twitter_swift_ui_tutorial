@@ -6,17 +6,19 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct NewTweetView: View {
     
     @Binding var isShowingNewTweetView: Bool
     @State var textEditorText: String = ""
+    @EnvironmentObject var viewModel: AuthViewModel
     
     var body: some View {
         NavigationView {
             VStack {
                 HStack(alignment: .top) {
-                    Image("batman")
+                    KFImage(.init(string: viewModel.user?.profileImageUrl ?? ""))
                         .resizable()
                         .frame(width: 56, height: 56)
                         .clipShape(Circle())
