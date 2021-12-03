@@ -33,6 +33,7 @@ class AuthViewModel: ObservableObject {
                 return
             }
             self.userSession = result?.user
+            self.fetchUser()
         }
     }
     
@@ -69,6 +70,7 @@ class AuthViewModel: ObservableObject {
                     
                     Firestore.firestore().collection("users").document(user.uid).setData(data) { error in
                         self.userSession = user
+                        self.fetchUser()
                         if let error = error {
                             self.error = error
                             return
