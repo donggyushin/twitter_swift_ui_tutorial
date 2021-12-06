@@ -12,6 +12,7 @@ struct NewTweetView: View {
     
     @Binding var isShowingNewTweetView: Bool
     @State var textEditorText: String = ""
+    @ObservedObject var uploadTweetViewModel = UploadTweetViewModel()
     @EnvironmentObject var viewModel: AuthViewModel
     
     var body: some View {
@@ -38,7 +39,7 @@ struct NewTweetView: View {
             }, label: {
                 Text("Cancel")
             }), trailing: Button(action: {
-                
+                uploadTweetViewModel.uploadTweet(caption: textEditorText)
             }, label: {
                 Text("Tweet")
                     .padding(.horizontal)

@@ -16,6 +16,8 @@ class AuthViewModel: ObservableObject {
     @Published var error: Error?
     @Published var user: TwitterUser?
     
+    static let shared = AuthViewModel()
+    
     init() {
         self.userSession = Auth.auth().currentUser
         fetchUser()
@@ -33,6 +35,7 @@ class AuthViewModel: ObservableObject {
                 return
             }
             self.userSession = result?.user
+            self.user = nil 
             self.fetchUser()
         }
     }
