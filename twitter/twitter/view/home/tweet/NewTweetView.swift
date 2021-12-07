@@ -12,8 +12,13 @@ struct NewTweetView: View {
     
     @Binding var isShowingNewTweetView: Bool
     @State var textEditorText: String = ""
-    @ObservedObject var uploadTweetViewModel = UploadTweetViewModel()
+    @ObservedObject var uploadTweetViewModel: UploadTweetViewModel
     @EnvironmentObject var viewModel: AuthViewModel
+    
+    init(isPresented: Binding<Bool>) {
+        self._isShowingNewTweetView = isPresented
+        self.uploadTweetViewModel = .init(isPresented: isPresented)
+    }
     
     var body: some View {
         NavigationView {
@@ -54,6 +59,6 @@ struct NewTweetView: View {
 
 struct NewTweetView_Previews: PreviewProvider {
     static var previews: some View {
-        NewTweetView(isShowingNewTweetView: .constant(true))
+        NewTweetView(isPresented: .constant(true))
     }
 }
