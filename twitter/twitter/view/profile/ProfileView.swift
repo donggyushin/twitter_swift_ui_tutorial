@@ -26,9 +26,9 @@ struct ProfileView: View {
                     .padding(.vertical)
                 
                 ForEach(0..<9, content: { _ in
-                    TweetCell()
-                        .padding(.horizontal)
-                        .padding(.bottom)
+//                    TweetCell()
+//                        .padding(.horizontal)
+//                        .padding(.bottom)
                 })
             }
             .navigationTitle("Spider Man")

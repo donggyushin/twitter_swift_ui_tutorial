@@ -37,6 +37,8 @@
 		703F22C02748BF4C00A3629C /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703F22BF2748BF4C00A3629C /* RegistrationView.swift */; };
 		7057476F274D09A1003AE7F1 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7057476E274D09A1003AE7F1 /* AuthViewModel.swift */; };
 		70574772274D1C14003AE7F1 /* ScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70574771274D1C14003AE7F1 /* ScrollView+Extension.swift */; };
+		706874A52760A0C100C44B32 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706874A42760A0C100C44B32 /* FeedViewModel.swift */; };
+		706874A72760A0DB00C44B32 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706874A62760A0DB00C44B32 /* Tweet.swift */; };
 		706BF95A27464B35002277F8 /* FilterButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706BF95927464B35002277F8 /* FilterButtonsView.swift */; };
 		7072FF9D2746302B0074DBD1 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7072FF9C2746302B0074DBD1 /* Message.swift */; };
 		7085ADAA275E1A1500139FC2 /* UploadTweetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7085ADA9275E1A1500139FC2 /* UploadTweetViewModel.swift */; };
@@ -102,6 +104,8 @@
 		703F22BF2748BF4C00A3629C /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		7057476E274D09A1003AE7F1 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		70574771274D1C14003AE7F1 /* ScrollView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScrollView+Extension.swift"; sourceTree = "<group>"; };
+		706874A42760A0C100C44B32 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
+		706874A62760A0DB00C44B32 /* Tweet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		706BF95927464B35002277F8 /* FilterButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterButtonsView.swift; sourceTree = "<group>"; };
 		7072FF9C2746302B0074DBD1 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		7085ADA9275E1A1500139FC2 /* UploadTweetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadTweetViewModel.swift; sourceTree = "<group>"; };
@@ -260,6 +264,7 @@
 				70A546C12750D7640027D210 /* SearchViewModel.swift */,
 				7015A37227562A1E009D2EFC /* ProfileViewModel.swift */,
 				7085ADA9275E1A1500139FC2 /* UploadTweetViewModel.swift */,
+				706874A42760A0C100C44B32 /* FeedViewModel.swift */,
 			);
 			path = viewModel;
 			sourceTree = "<group>";
@@ -269,6 +274,7 @@
 			children = (
 				7072FF9C2746302B0074DBD1 /* Message.swift */,
 				7005E73E274FB07C00FDE7EC /* TwitterUser.swift */,
+				706874A62760A0DB00C44B32 /* Tweet.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -565,6 +571,7 @@
 				70F065312747C86300412FE3 /* TextAreaView.swift in Sources */,
 				70B47E7727463EE200E8ED0F /* ProfileHeaderView.swift in Sources */,
 				7028237D27451A0500A81745 /* FeedView.swift in Sources */,
+				706874A72760A0DB00C44B32 /* Tweet.swift in Sources */,
 				7028235027450D6100A81745 /* twitterApp.swift in Sources */,
 				70F0652F2747BF5B00412FE3 /* NewTweetView.swift in Sources */,
 				70FA36622748105700AD322E /* TextFieldView.swift in Sources */,
@@ -581,6 +588,7 @@
 				70F728B227453CFC000A3672 /* UserCell.swift in Sources */,
 				70F728BF27454BAD000A3672 /* NewMessageView.swift in Sources */,
 				70B47E7A27463F3300E8ED0F /* FollowingFollwerView.swift in Sources */,
+				706874A52760A0C100C44B32 /* FeedViewModel.swift in Sources */,
 				7072FF9D2746302B0074DBD1 /* Message.swift in Sources */,
 				70F728B527454331000A3672 /* ConversationListView.swift in Sources */,
 				7057476F274D09A1003AE7F1 /* AuthViewModel.swift in Sources */,
