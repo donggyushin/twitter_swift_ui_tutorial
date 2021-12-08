@@ -14,7 +14,7 @@ struct FeedView: View {
     
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
-            ScrollView {
+            ScrollView(.vertical) {
                 VStack {
                     ForEach(viewModel.tweets) {tweet in
                         TweetCell(tweet: tweet)
@@ -24,6 +24,7 @@ struct FeedView: View {
                 }
                 .padding(.top)
             }
+            .frame(maxWidth: .infinity)
             .padding(.top, 1)
             
             Button {
