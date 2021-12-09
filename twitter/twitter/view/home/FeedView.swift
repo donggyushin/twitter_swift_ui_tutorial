@@ -17,9 +17,13 @@ struct FeedView: View {
             ScrollView(.vertical) {
                 VStack {
                     ForEach(viewModel.tweets) {tweet in
-                        TweetCell(tweet: tweet)
-                            .padding(.horizontal)
-                            .padding(.bottom)
+                        NavigationLink {
+                            TweetDetailView(tweet: tweet)
+                        } label: {
+                            TweetCell(tweet: tweet)
+                                .padding(.horizontal)
+                                .padding(.bottom)
+                        }
                     }
                 }
                 .padding(.top)

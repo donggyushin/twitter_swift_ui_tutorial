@@ -33,6 +33,8 @@
 		7028236B27450D6100A81745 /* twitterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7028236A27450D6100A81745 /* twitterUITests.swift */; };
 		7028236D27450D6200A81745 /* twitterUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7028236C27450D6200A81745 /* twitterUITestsLaunchTests.swift */; };
 		7028237D27451A0500A81745 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7028237C27451A0500A81745 /* FeedView.swift */; };
+		702AA03C276235E8000D57F6 /* TweetDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702AA03B276235E8000D57F6 /* TweetDetailView.swift */; };
+		702AA03E27623B79000D57F6 /* TweetActionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 702AA03D27623B79000D57F6 /* TweetActionsView.swift */; };
 		703F22BE2748BE6700A3629C /* PasswordTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703F22BD2748BE6700A3629C /* PasswordTextFieldView.swift */; };
 		703F22C02748BF4C00A3629C /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703F22BF2748BF4C00A3629C /* RegistrationView.swift */; };
 		7057476F274D09A1003AE7F1 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7057476E274D09A1003AE7F1 /* AuthViewModel.swift */; };
@@ -100,6 +102,8 @@
 		7028236A27450D6100A81745 /* twitterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = twitterUITests.swift; sourceTree = "<group>"; };
 		7028236C27450D6200A81745 /* twitterUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = twitterUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		7028237C27451A0500A81745 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
+		702AA03B276235E8000D57F6 /* TweetDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetDetailView.swift; sourceTree = "<group>"; };
+		702AA03D27623B79000D57F6 /* TweetActionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetActionsView.swift; sourceTree = "<group>"; };
 		703F22BD2748BE6700A3629C /* PasswordTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextFieldView.swift; sourceTree = "<group>"; };
 		703F22BF2748BF4C00A3629C /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		7057476E274D09A1003AE7F1 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
@@ -279,6 +283,14 @@
 			path = model;
 			sourceTree = "<group>";
 		};
+		702AA03A276235DC000D57F6 /* detail */ = {
+			isa = PBXGroup;
+			children = (
+				702AA03B276235E8000D57F6 /* TweetDetailView.swift */,
+			);
+			path = detail;
+			sourceTree = "<group>";
+		};
 		70574770274D1C01003AE7F1 /* extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -334,8 +346,10 @@
 		70F0652D2747BF4A00412FE3 /* tweet */ = {
 			isa = PBXGroup;
 			children = (
+				702AA03A276235DC000D57F6 /* detail */,
 				702632CE2745292B009B97E9 /* TweetCell.swift */,
 				70F0652E2747BF5B00412FE3 /* NewTweetView.swift */,
+				702AA03D27623B79000D57F6 /* TweetActionsView.swift */,
 			);
 			path = tweet;
 			sourceTree = "<group>";
@@ -578,10 +592,12 @@
 				703F22C02748BF4C00A3629C /* RegistrationView.swift in Sources */,
 				70574772274D1C14003AE7F1 /* ScrollView+Extension.swift in Sources */,
 				70F728C127454DF3000A3672 /* MessageInputView.swift in Sources */,
+				702AA03C276235E8000D57F6 /* TweetDetailView.swift in Sources */,
 				7085ADAA275E1A1500139FC2 /* UploadTweetViewModel.swift in Sources */,
 				702632CF2745292B009B97E9 /* TweetCell.swift in Sources */,
 				70B47E7527463E2000E8ED0F /* ProfileView.swift in Sources */,
 				70A546C22750D7640027D210 /* SearchViewModel.swift in Sources */,
+				702AA03E27623B79000D57F6 /* TweetActionsView.swift in Sources */,
 				70F728C6274554BA000A3672 /* OtherChatBubble.swift in Sources */,
 				70BF00A62748F4550002DD85 /* ImagePicker.swift in Sources */,
 				70F728B0274538DC000A3672 /* SearchBar.swift in Sources */,
