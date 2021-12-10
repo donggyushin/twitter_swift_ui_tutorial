@@ -26,7 +26,7 @@ struct TweetCell: View {
                     HStack {
                         Text(tweet.fullname)
                             .font(Font.system(size: 14, weight: .semibold))
-                            .foregroundColor(.black)
+                            .foregroundColor(.primary)
                         
                         Text("@\(tweet.username) • 2w")
                             .foregroundColor(.gray)
@@ -34,12 +34,12 @@ struct TweetCell: View {
                     }
                     
                     Text(tweet.caption)
-                        .foregroundColor(.black)
+                        .foregroundColor(.primary)
                 }
                 Spacer()
             }
             
-            TweetActionsView()
+            TweetActionsView(tweet: tweet)
         }
     }
 }
