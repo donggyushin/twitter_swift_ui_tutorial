@@ -14,10 +14,7 @@ class TweetActionViewModel: ObservableObject {
     
     init(tweet: Tweet) {
         self.tweet = tweet
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        COLLECTION_TWEETS.document(tweet.id).collection("tweet-likes").document(uid).getDocument { snapshot, _ in
-            self.didLike = snapshot?.data() != nil
-        }
+        checkIfUserLikedTweet()
     }
     
     func likeTweet() {
@@ -35,6 +32,23 @@ class TweetActionViewModel: ObservableObject {
     }
     
     func unlikeTweet() {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let tweetLikesRef = COLLECTION_TWEETS.document(tweet.id).collection("tweet-likes")
+        let userLikesRef = COLLECTION_USERS.document(uid).collection("user-likes")
         
+        tweetLikesRef.document(uid).delete { _ in
+            COLLECTION_TWEETS.document(self.tweet.id).updateData(["likes": self.tweet.likes - 1]) { _ in
+                userLikesRef.document(self.tweet.id).delete { _ in
+                    self.didLike = false
+                }
+            }
+        }
+    }
+    
+    private func checkIfUserLikedTweet() {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        COLLECTION_TWEETS.document(tweet.id).collection("tweet-likes").document(uid).getDocument { snapshot, _ in
+            self.didLike = snapshot?.data() != nil
+        }
     }
 }
