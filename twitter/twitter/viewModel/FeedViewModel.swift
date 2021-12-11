@@ -6,12 +6,16 @@
 //
 
 import SwiftUI
+import Combine
 
 class FeedViewModel: ObservableObject {
     @Published var tweets: [Tweet] = []
+    private var disposeBag = Set<AnyCancellable>()
     
     init() {
         fetchTweets()
+        bind()
+        setTweetsCacheData()
     }
     
     func fetchTweets() {
@@ -19,5 +23,15 @@ class FeedViewModel: ObservableObject {
             guard let documents = snapshot?.documents else { return }
             self.tweets = documents.map({ Tweet(dictionary: $0.data()) })
         }
+    }
+    
+    private func bind() {
+        $tweets.sink { tweets in
+            if tweets.isEmpty == false { tweets.saveUserDefaults() }
+        }.store(in: &disposeBag)
+    }
+    
+    private func setTweetsCacheData() {
+        self.tweets = Tweet.getTweetArrayFromUserDefaults()
     }
 }
