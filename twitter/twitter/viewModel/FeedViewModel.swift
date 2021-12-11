@@ -13,9 +13,9 @@ class FeedViewModel: ObservableObject {
     private var disposeBag = Set<AnyCancellable>()
     
     init() {
+        setTweetsCacheData()
         fetchTweets()
         bind()
-        setTweetsCacheData()
     }
     
     func fetchTweets() {
