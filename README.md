@@ -26,16 +26,14 @@ API를 Firestore 및 데이터 모델과 통합하는 작업, 유저를 팔로�
 
 # 무엇을 구현 할 것인가?
 
-- Direct Messaging
-- Create users
-- Create a user profile
-- Authenticate users with Firebase
-- Search for users
-- Upload tweets
-- Home feed with tweets
-- Line tweets
-- Follow/Unfollow users from profile
-- Logging in and logging out
+- 다이렉트 메시지 기능
+- 회원가입
+- 유저 프로필 작성
+- user Authenticate
+- 유저 검색
+- 트윗 포스팅
+- 트윗 피드 리스트
+- 유저 팔로우/팔로잉
 
 # Screen shots
 
