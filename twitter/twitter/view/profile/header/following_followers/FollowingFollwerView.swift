@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct FollowingFollwerView: View {
-    @Binding var text: String
-    @Binding var number: Int
+    let text: String
+    let number: Int
     var body: some View {
         VStack {
             Text("\(number)")
@@ -24,6 +24,6 @@ struct FollowingFollwerView: View {
 
 struct FollowingFollwerView_Previews: PreviewProvider {
     static var previews: some View {
-        FollowingFollwerView(text: .constant("Followers"), number: .constant(12))
+        FollowingFollwerView(text: "Followers", number: 12)
     }
 }

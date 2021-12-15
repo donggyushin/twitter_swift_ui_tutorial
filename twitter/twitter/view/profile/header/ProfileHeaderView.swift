@@ -9,10 +9,7 @@ import SwiftUI
 import Kingfisher
 
 struct ProfileHeaderView: View {
-    @State var followers: Int = 12
-    @State var followings: Int = 0
-    let viewModel: ProfileViewModel
-    @Binding var isFollowed: Bool
+    @ObservedObject var viewModel: ProfileViewModel
     
     var body: some View {
         VStack {
@@ -36,13 +33,13 @@ struct ProfileHeaderView: View {
                 .padding(.horizontal)
             
             HStack(spacing: 40) {
-                FollowingFollwerView(text: .constant("Followers"), number: $followers)
+                FollowingFollwerView(text: "Followers", number: viewModel.user.stats.followers)
                 
-                FollowingFollwerView(text: .constant("Followings"), number: $followings)
+                FollowingFollwerView(text: "Followings", number: viewModel.user.stats.following)
             }
             .padding(.top, 20)
             
-            ProfileHeaderActionButtonsView(viewModel: viewModel, isFollowed: $isFollowed)
+            ProfileHeaderActionButtonsView(viewModel: viewModel)
                 .padding(.top)
         }
     }
@@ -54,6 +51,6 @@ struct ProfileHeaderView_Previews: PreviewProvider {
                                                                     "fullname": "Shin donggyu",
                                                                     "profileImageUrl": "https://firebasestorage.googleapis.com:443/v0/b/twitter-swift-ui-754b7.appspot.com/o/9CACC08F-0341-4FBD-B7E6-C40BAE58A83B?alt=media&token=3ed1e3aa-41f6-4c89-a750-37ca42d2266b",
                                                                     "uid": "asd",
-                                                                    "username": "Spider Man"])), isFollowed: .constant(false))
+                                                                    "username": "Spider Man"])))
     }
 }

@@ -9,17 +9,16 @@ import SwiftUI
 import Firebase
 
 class ProfileViewModel: ObservableObject {
-    @Published var isFollowed = false
     @Published var userTweets: [Tweet] = []
     @Published var likedTweets: [Tweet] = []
-    
-    let user: TwitterUser
+    @Published var user: TwitterUser
     
     init(user: TwitterUser) {
         self.user = user
         checkIfUserIsFollowed()
         fetchUserTweets()
         fetchLikedTweets()
+        updateUserStats()
     }
     
     func follow() {
@@ -28,7 +27,7 @@ class ProfileViewModel: ObservableObject {
         let follwersRef = COLLECTION_FOLLOWERS.document(user.id).collection("user-followers")
         followingRef.document(user.id).setData([:]) { _ in
             follwersRef.document(currentUid).setData([:]) { _ in
-                self.isFollowed = true
+                self.user.isFollowed = true
             }
         }
     }
@@ -39,7 +38,7 @@ class ProfileViewModel: ObservableObject {
         let follwersRef = COLLECTION_FOLLOWERS.document(user.id).collection("user-followers")
         followingRef.document(user.id).delete { _ in
             follwersRef.document(currentUid).delete { _ in
-                self.isFollowed = false
+                self.user.isFollowed = false
             }
         }
     }
@@ -52,34 +51,27 @@ class ProfileViewModel: ObservableObject {
         }
     }
     
+    private func updateUserStats() {
+        user.fetchStats { stats in
+            self.user.stats = stats
+        }
+    }
+    
     private func checkIfUserIsFollowed() {
-        guard let currentUid = Auth.auth().currentUser?.uid else { return }
-        let followingRef = COLLECTION_FOLLOWING.document(currentUid).collection("user-following")
-        followingRef.document(user.id).getDocument { snapshot, _ in
-            guard let isFollowed = snapshot?.exists else { return }
-            self.isFollowed = isFollowed
+        self.user.checkIsFollowed { isFollowed in
+            self.user.isFollowed = isFollowed
         }
     }
     
     private func fetchUserTweets() {
-        COLLECTION_TWEETS.whereField("uid", isEqualTo: user.id).getDocuments { snapshot, _ in
-            guard let documents = snapshot?.documents else { return }
-            self.userTweets = documents.map({ .init(dictionary: $0.data()) })
+        user.fetchTweets { tweets in
+            self.userTweets = tweets
         }
     }
     
     private func fetchLikedTweets() {
-        var tweets: [Tweet] = []
-        COLLECTION_USERS.document(user.id).collection("user-likes").getDocuments { snapshot, _ in
-            guard let documents = snapshot?.documents else { return }
-            let tweetIds = documents.map({ $0.documentID })
-            tweetIds.forEach({
-                COLLECTION_TWEETS.document($0).getDocument { snapshot, _ in
-                    guard let data = snapshot?.data() else { return }
-                    tweets.append(.init(dictionary: data))
-                    if tweets.count == tweetIds.count { self.likedTweets = tweets }
-                }
-            })
+        user.fetchLikedTweets { tweets in
+            self.likedTweets = tweets
         }
     }
 }
