@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import LazyViewSwiftUI
 
 struct SearchView: View {
     
@@ -20,7 +21,7 @@ struct SearchView: View {
                 VStack {
                     ForEach(viewModel.users) { user in
                         NavigationLink {
-                            ProfileView(user: user)
+                            LazyView(ProfileView(user: user))
                         } label: {
                             UserCell(user: user)
                                 .padding(.horizontal)

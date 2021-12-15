@@ -45,6 +45,7 @@
 		706BF95A27464B35002277F8 /* FilterButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706BF95927464B35002277F8 /* FilterButtonsView.swift */; };
 		7072FF9D2746302B0074DBD1 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7072FF9C2746302B0074DBD1 /* Message.swift */; };
 		7085ADAA275E1A1500139FC2 /* UploadTweetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7085ADA9275E1A1500139FC2 /* UploadTweetViewModel.swift */; };
+		70A1768D2769E72900067973 /* LazyViewSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 70A1768C2769E72900067973 /* LazyViewSwiftUI */; };
 		70A546C02750D6F60027D210 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 70A546BF2750D6F60027D210 /* Kingfisher */; };
 		70A546C22750D7640027D210 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A546C12750D7640027D210 /* SearchViewModel.swift */; };
 		70A546C42750D7F00027D210 /* collections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A546C32750D7F00027D210 /* collections.swift */; };
@@ -149,6 +150,7 @@
 				700554FA274BBD1D0009994F /* FirebaseAuth in Frameworks */,
 				70055512274BBD1D0009994F /* FirebaseStorageCombine-Community in Frameworks */,
 				7005550C274BBD1D0009994F /* FirebaseMessaging in Frameworks */,
+				70A1768D2769E72900067973 /* LazyViewSwiftUI in Frameworks */,
 				70055514274BBD1D0009994F /* FirebaseStorageSwift-Beta in Frameworks */,
 				70055500274BBD1D0009994F /* FirebaseFirestoreCombine-Community in Frameworks */,
 				70055510274BBD1D0009994F /* FirebaseStorage in Frameworks */,
@@ -458,6 +460,7 @@
 				70055511274BBD1D0009994F /* FirebaseStorageCombine-Community */,
 				70055513274BBD1D0009994F /* FirebaseStorageSwift-Beta */,
 				70A546BF2750D6F60027D210 /* Kingfisher */,
+				70A1768C2769E72900067973 /* LazyViewSwiftUI */,
 			);
 			productName = twitter;
 			productReference = 7028234C27450D6100A81745 /* twitter.app */;
@@ -534,6 +537,7 @@
 			packageReferences = (
 				700554F8274BBD1D0009994F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				70A546BE2750D6F60027D210 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				70A1768B2769E72900067973 /* XCRemoteSwiftPackageReference "Lazy-View-SwiftUI" */,
 			);
 			productRefGroup = 7028234D27450D6100A81745 /* Products */;
 			projectDirPath = "";
@@ -974,6 +978,14 @@
 				minimumVersion = 8.0.0;
 			};
 		};
+		70A1768B2769E72900067973 /* XCRemoteSwiftPackageReference "Lazy-View-SwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/joehinkle11/Lazy-View-SwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		70A546BE2750D6F60027D210 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -1054,6 +1066,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 700554F8274BBD1D0009994F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = "FirebaseStorageSwift-Beta";
+		};
+		70A1768C2769E72900067973 /* LazyViewSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 70A1768B2769E72900067973 /* XCRemoteSwiftPackageReference "Lazy-View-SwiftUI" */;
+			productName = LazyViewSwiftUI;
 		};
 		70A546BF2750D6F60027D210 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
