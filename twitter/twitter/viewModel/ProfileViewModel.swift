@@ -61,13 +61,15 @@ class ProfileViewModel: ObservableObject {
     }
     
     func fetchLikedTweets() {
+        var tweets: [Tweet] = []
         COLLECTION_USERS.document(user.id).collection("user-likes").getDocuments { snapshot, _ in
             guard let documents = snapshot?.documents else { return }
             let tweetIds = documents.map({ $0.documentID })
             tweetIds.forEach({
                 COLLECTION_TWEETS.document($0).getDocument { snapshot, _ in
                     guard let data = snapshot?.data() else { return }
-                    self.likedTweets.append(.init(dictionary: data))
+                    tweets.append(.init(dictionary: data))
+                    if tweets.count == tweetIds.count { self.likedTweets = tweets }
                 }
             })
         }

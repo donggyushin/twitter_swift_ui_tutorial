@@ -25,11 +25,11 @@ struct ProfileView: View {
                 FilterButtonsView(selectedOption: $selectedOption)
                     .padding(.vertical)
                 
-                ForEach(0..<9, content: { _ in
-//                    TweetCell()
-//                        .padding(.horizontal)
-//                        .padding(.bottom)
-                })
+                ForEach(viewModel.userTweets) { tweet in
+                    TweetCell(tweet: tweet)
+                        .padding(.horizontal)
+                        .padding(.bottom)
+                }
             }
             .navigationTitle("Spider Man")
         }
