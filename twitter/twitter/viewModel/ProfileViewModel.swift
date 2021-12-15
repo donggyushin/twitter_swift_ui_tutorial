@@ -44,7 +44,15 @@ class ProfileViewModel: ObservableObject {
         }
     }
     
-    func checkIfUserIsFollowed() {
+    func tweets(filter: TweetFilterOptions) -> [Tweet] {
+        switch filter {
+        case .tweets: return self.userTweets
+        case .likes: return self.likedTweets
+        case .replies: return []
+        }
+    }
+    
+    private func checkIfUserIsFollowed() {
         guard let currentUid = Auth.auth().currentUser?.uid else { return }
         let followingRef = COLLECTION_FOLLOWING.document(currentUid).collection("user-following")
         followingRef.document(user.id).getDocument { snapshot, _ in
@@ -53,14 +61,14 @@ class ProfileViewModel: ObservableObject {
         }
     }
     
-    func fetchUserTweets() {
+    private func fetchUserTweets() {
         COLLECTION_TWEETS.whereField("uid", isEqualTo: user.id).getDocuments { snapshot, _ in
             guard let documents = snapshot?.documents else { return }
             self.userTweets = documents.map({ .init(dictionary: $0.data()) })
         }
     }
     
-    func fetchLikedTweets() {
+    private func fetchLikedTweets() {
         var tweets: [Tweet] = []
         COLLECTION_USERS.document(user.id).collection("user-likes").getDocuments { snapshot, _ in
             guard let documents = snapshot?.documents else { return }
