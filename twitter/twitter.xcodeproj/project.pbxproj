@@ -49,6 +49,11 @@
 		70A546C02750D6F60027D210 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 70A546BF2750D6F60027D210 /* Kingfisher */; };
 		70A546C22750D7640027D210 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A546C12750D7640027D210 /* SearchViewModel.swift */; };
 		70A546C42750D7F00027D210 /* collections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A546C32750D7F00027D210 /* collections.swift */; };
+		70AECE07276B3588003F61AF /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = 70AECE06276B3588003F61AF /* RxBlocking */; };
+		70AECE09276B3588003F61AF /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 70AECE08276B3588003F61AF /* RxCocoa */; };
+		70AECE0B276B3588003F61AF /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 70AECE0A276B3588003F61AF /* RxRelay */; };
+		70AECE0D276B3588003F61AF /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 70AECE0C276B3588003F61AF /* RxSwift */; };
+		70AECE0F276B3588003F61AF /* RxTest in Frameworks */ = {isa = PBXBuildFile; productRef = 70AECE0E276B3588003F61AF /* RxTest */; };
 		70B47E7527463E2000E8ED0F /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B47E7427463E2000E8ED0F /* ProfileView.swift */; };
 		70B47E7727463EE200E8ED0F /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B47E7627463EE200E8ED0F /* ProfileHeaderView.swift */; };
 		70B47E7A27463F3300E8ED0F /* FollowingFollwerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B47E7927463F3300E8ED0F /* FollowingFollwerView.swift */; };
@@ -145,9 +150,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70AECE09276B3588003F61AF /* RxCocoa in Frameworks */,
 				7005550E274BBD1D0009994F /* FirebaseRemoteConfig in Frameworks */,
+				70AECE0D276B3588003F61AF /* RxSwift in Frameworks */,
 				70055506274BBD1D0009994F /* FirebaseFunctionsCombine-Community in Frameworks */,
 				700554FA274BBD1D0009994F /* FirebaseAuth in Frameworks */,
+				70AECE0B276B3588003F61AF /* RxRelay in Frameworks */,
+				70AECE07276B3588003F61AF /* RxBlocking in Frameworks */,
+				70AECE0F276B3588003F61AF /* RxTest in Frameworks */,
 				70055512274BBD1D0009994F /* FirebaseStorageCombine-Community in Frameworks */,
 				7005550C274BBD1D0009994F /* FirebaseMessaging in Frameworks */,
 				70A1768D2769E72900067973 /* LazyViewSwiftUI in Frameworks */,
@@ -461,6 +471,11 @@
 				70055513274BBD1D0009994F /* FirebaseStorageSwift-Beta */,
 				70A546BF2750D6F60027D210 /* Kingfisher */,
 				70A1768C2769E72900067973 /* LazyViewSwiftUI */,
+				70AECE06276B3588003F61AF /* RxBlocking */,
+				70AECE08276B3588003F61AF /* RxCocoa */,
+				70AECE0A276B3588003F61AF /* RxRelay */,
+				70AECE0C276B3588003F61AF /* RxSwift */,
+				70AECE0E276B3588003F61AF /* RxTest */,
 			);
 			productName = twitter;
 			productReference = 7028234C27450D6100A81745 /* twitter.app */;
@@ -538,6 +553,7 @@
 				700554F8274BBD1D0009994F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				70A546BE2750D6F60027D210 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				70A1768B2769E72900067973 /* XCRemoteSwiftPackageReference "Lazy-View-SwiftUI" */,
+				70AECE05276B3588003F61AF /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = 7028234D27450D6100A81745 /* Products */;
 			projectDirPath = "";
@@ -994,6 +1010,14 @@
 				minimumVersion = 7.0.0;
 			};
 		};
+		70AECE05276B3588003F61AF /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1076,6 +1100,31 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 70A546BE2750D6F60027D210 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		70AECE06276B3588003F61AF /* RxBlocking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 70AECE05276B3588003F61AF /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxBlocking;
+		};
+		70AECE08276B3588003F61AF /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 70AECE05276B3588003F61AF /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		70AECE0A276B3588003F61AF /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 70AECE05276B3588003F61AF /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		70AECE0C276B3588003F61AF /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 70AECE05276B3588003F61AF /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		70AECE0E276B3588003F61AF /* RxTest */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 70AECE05276B3588003F61AF /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxTest;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
