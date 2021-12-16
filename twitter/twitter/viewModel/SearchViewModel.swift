@@ -7,18 +7,27 @@
 
 import SwiftUI
 import Firebase
+import RxSwift
 
 class SearchViewModel: ObservableObject {
     @Published var users: [TwitterUser] = []
     
-    init() {
+    private let userRepository: UserRepository
+    private let disposeBag = DisposeBag()
+    
+    init(userRepository: UserRepository) {
+        self.userRepository = userRepository
         fetchUsers()
     }
     
     func fetchUsers() {
-        COLLECTION_USERS.getDocuments { snapshot, _ in
-            guard let documents = snapshot?.documents else { return }
-            self.users = documents.map({ TwitterUser(dictionary: $0.data()) })
-        }
+        userRepository.fetchUsers().subscribe(onNext: {[weak self] result in
+            switch result {
+            case .failure(let error):
+                print("DEBUG: Error: \(error.localizedDescription)")
+            case .success(let users):
+                self?.users = users
+            }
+        }).disposed(by: disposeBag)
     }
 }

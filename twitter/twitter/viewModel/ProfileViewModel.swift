@@ -7,14 +7,20 @@
 
 import SwiftUI
 import Firebase
+import RxSwift
 
 class ProfileViewModel: ObservableObject {
     @Published var userTweets: [Tweet] = []
     @Published var likedTweets: [Tweet] = []
     @Published var user: TwitterUser
     
-    init(user: TwitterUser) {
+    private let tweetRepository: TweetRepository
+    
+    private let disposeBag = DisposeBag()
+    
+    init(user: TwitterUser, tweetRepository: TweetRepository) {
         self.user = user
+        self.tweetRepository = tweetRepository
         checkIfUserIsFollowed()
         fetchUserTweets()
         fetchLikedTweets()
@@ -70,8 +76,13 @@ class ProfileViewModel: ObservableObject {
     }
     
     private func fetchLikedTweets() {
-        user.fetchLikedTweets { tweets in
-            self.likedTweets = tweets
-        }
+        tweetRepository.fetchLikedTweets(userId: user.id).subscribe(onNext: {[weak self] result in
+            switch result {
+            case .failure(let error):
+                print("DEBUG: error: \(error.localizedDescription)")
+            case .success(let tweets):
+                self?.likedTweets = tweets
+            }
+        }).disposed(by: disposeBag)
     }
 }

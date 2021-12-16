@@ -11,7 +11,7 @@ struct NewMessageView: View {
     @State var searchTest: String = ""
     @Binding var isShowingNewMessageView: Bool
     @Binding var startChat: Bool
-    @ObservedObject var viewModel = SearchViewModel()
+    @ObservedObject var viewModel = SearchViewModel(userRepository: RepositoryDependency.resolve().userRepository)
     
     var body: some View {
         ScrollView {

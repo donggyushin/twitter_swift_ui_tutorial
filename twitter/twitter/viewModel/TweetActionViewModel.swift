@@ -7,48 +7,51 @@
 
 import SwiftUI
 import Firebase
+import RxSwift
 
 class TweetActionViewModel: ObservableObject {
     let tweet: Tweet
     @Published var didLike = false
     
-    init(tweet: Tweet) {
+    private let tweetRepository: TweetRepository
+    private let disposeBag = DisposeBag()
+    
+    init(tweet: Tweet, tweetRepository: TweetRepository) {
         self.tweet = tweet
+        self.tweetRepository = tweetRepository
         checkIfUserLikedTweet()
     }
     
     func likeTweet() {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        let tweetLikesRef = COLLECTION_TWEETS.document(tweet.id).collection("tweet-likes")
-        let userLikesRef = COLLECTION_USERS.document(uid).collection("user-likes")
-        
-        tweetLikesRef.document(uid).setData([:]) { _ in
-            COLLECTION_TWEETS.document(self.tweet.id).updateData(["likes": self.tweet.likes + 1]) { _ in
-                userLikesRef.document(self.tweet.id).setData([:]) { _ in
-                    self.didLike = true
-                }
+        tweetRepository.likeTweet(tweet: tweet).subscribe(onNext: {[weak self] result in
+            switch result {
+            case .success(let bool):
+                self?.didLike = bool
+            case .failure(let error):
+                print("DEBUG: error: \(error.localizedDescription)")
             }
-        }
+        }).disposed(by: disposeBag)
     }
     
     func unlikeTweet() {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        let tweetLikesRef = COLLECTION_TWEETS.document(tweet.id).collection("tweet-likes")
-        let userLikesRef = COLLECTION_USERS.document(uid).collection("user-likes")
-        
-        tweetLikesRef.document(uid).delete { _ in
-            COLLECTION_TWEETS.document(self.tweet.id).updateData(["likes": self.tweet.likes - 1]) { _ in
-                userLikesRef.document(self.tweet.id).delete { _ in
-                    self.didLike = false
-                }
+        tweetRepository.unlikeTweet(tweet: tweet).subscribe(onNext: { [weak self] result in
+            switch result {
+            case .failure(let error):
+                print("DEBUG: error: \(error.localizedDescription)")
+            case .success(let bool):
+                self?.didLike = bool
             }
-        }
+        }).disposed(by: disposeBag)
     }
     
     private func checkIfUserLikedTweet() {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        COLLECTION_TWEETS.document(tweet.id).collection("tweet-likes").document(uid).getDocument { snapshot, _ in
-            self.didLike = snapshot?.data() != nil
-        }
+        tweetRepository.checkIfUserLikedTweet(tweet: tweet).subscribe(onNext: {[weak self] result in
+            switch result {
+            case .failure(let error):
+                print("DEBUG: error: \(error.localizedDescription)")
+            case .success(let bool):
+                self?.didLike = bool
+            }
+        }).disposed(by: disposeBag)
     }
 }

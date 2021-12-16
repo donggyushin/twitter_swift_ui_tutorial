@@ -11,7 +11,7 @@ struct TweetActionsView: View {
     @ObservedObject var viewModel: TweetActionViewModel
     
     init(tweet: Tweet) {
-        viewModel = .init(tweet: tweet)
+        viewModel = .init(tweet: tweet, tweetRepository: RepositoryDependency.resolve().tweetRepository)
     }
     
     var body: some View {

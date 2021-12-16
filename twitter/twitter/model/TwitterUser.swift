@@ -59,25 +59,6 @@ struct TwitterUser: Identifiable {
         }
     }
     
-    func fetchLikedTweets(completion: @escaping([Tweet]) -> Void) {
-        var tweets: [Tweet] = []
-        COLLECTION_USERS.document(self.id).collection("user-likes").getDocuments { snapshot, _ in
-            guard let documents = snapshot?.documents else {
-                completion(tweets)
-                return }
-            let tweetIds = documents.map({ $0.documentID })
-            tweetIds.forEach({
-                COLLECTION_TWEETS.document($0).getDocument { snapshot, _ in
-                    guard let data = snapshot?.data() else { return }
-                    tweets.append(.init(dictionary: data))
-                    if tweets.count == tweetIds.count {
-                        completion(tweets)
-                    }
-                }
-            })
-        }
-    }
-    
     struct Stats {
         let followers: Int
         let following: Int
