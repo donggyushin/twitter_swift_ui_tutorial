@@ -13,4 +13,5 @@ protocol TweetRepository {
     func checkIfUserLikedTweet(tweet: Tweet) -> Observable<Result<Bool, Error>>
     func fetchLikedTweets(userId: String) -> Observable<Result<[Tweet], Error>>
     func fetchTweets(userId: String) -> Observable<Result<[Tweet], Error>>
+    func fetchTweets() -> Observable<Result<[Tweet], Error>>
 }

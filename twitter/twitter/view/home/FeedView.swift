@@ -10,7 +10,7 @@ import SwiftUI
 struct FeedView: View {
     
     @State var isShowingNewTweetView = false
-    @ObservedObject var viewModel = FeedViewModel()
+    @ObservedObject var viewModel = FeedViewModel(tweetRepository: RepositoryDependency.resolve().tweetRepository)
     
     var body: some View {
         ZStack(alignment: .bottomTrailing) {

@@ -7,28 +7,37 @@
 
 import SwiftUI
 import Combine
+import RxSwift
 
 class FeedViewModel: ObservableObject {
     @Published var tweets: [Tweet] = []
-    private var disposeBag = Set<AnyCancellable>()
+    private var subscriber = Set<AnyCancellable>()
+    private let disposeBag = DisposeBag()
     
-    init() {
+    private let tweetRepository: TweetRepository
+    
+    init(tweetRepository: TweetRepository) {
+        self.tweetRepository = tweetRepository
         setTweetsCacheData()
         fetchTweets()
         bind()
     }
     
     func fetchTweets() {
-        COLLECTION_TWEETS.getDocuments { snapshot, _ in
-            guard let documents = snapshot?.documents else { return }
-            self.tweets = documents.map({ Tweet(dictionary: $0.data()) })
-        }
+        tweetRepository.fetchTweets().subscribe(onNext: { [weak self] result in
+            switch result {
+            case .success(let tweets):
+                self?.tweets = tweets
+            case .failure(let error):
+                print("DEBUG: error: \(error.localizedDescription)")
+            }
+        }).disposed(by: disposeBag)
     }
     
     private func bind() {
         $tweets.sink { tweets in
             if tweets.isEmpty == false { tweets.saveUserDefaults() }
-        }.store(in: &disposeBag)
+        }.store(in: &subscriber)
     }
     
     private func setTweetsCacheData() {

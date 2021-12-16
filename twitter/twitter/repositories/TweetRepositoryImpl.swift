@@ -10,6 +10,21 @@ import Firebase
 
 class TweetRepositoryImpl: TweetRepository {
     
+    func fetchTweets() -> Observable<Result<[Tweet], Error>> {
+        return .create { observer in
+            COLLECTION_TWEETS.getDocuments { snapshot, _ in
+                guard let documents = snapshot?.documents else {
+                    observer.onNext(.success([]))
+                    observer.onCompleted()
+                    return }
+                
+                observer.onNext(.success(documents.map({ Tweet(dictionary: $0.data()) })))
+                observer.onCompleted()
+            }
+            return Disposables.create()
+        }
+    }
+    
     func fetchTweets(userId: String) -> Observable<Result<[Tweet], Error>> {
         return .create { observer in
             
@@ -17,7 +32,7 @@ class TweetRepositoryImpl: TweetRepository {
                 guard let documents = snapshot?.documents else {
                     observer.onNext(.success([]))
                     observer.onCompleted()
-                    return 
+                    return
                 }
                 observer.onNext(.success(documents.map({ Tweet(dictionary: $0.data()) })))
                 observer.onCompleted()
