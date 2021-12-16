@@ -25,40 +25,6 @@ struct TwitterUser: Identifiable {
         self.profileImageUrl = dictionary["profileImageUrl"] as? String ?? ""
     }
     
-    func fetchStats(completion: @escaping (Stats) -> Void) {
-        let followingRef = COLLECTION_FOLLOWING.document(self.id).collection("user-following")
-        let followersRef = COLLECTION_FOLLOWERS.document(self.id).collection("user-followers")
-        
-        followersRef.getDocuments { snapshot, _ in
-            let followers = snapshot?.count ?? 0
-            followingRef.getDocuments { snapshot, _ in
-                let following = snapshot?.count ?? 0
-                completion(.init(followers: followers, following: following))
-            }
-        }
-    }
-    
-    func checkIsFollowed(completion: @escaping(Bool) -> Void) {
-        guard let currentUid = Auth.auth().currentUser?.uid else {
-            completion(false)
-            return }
-        let followingRef = COLLECTION_FOLLOWING.document(currentUid).collection("user-following")
-        followingRef.document(self.id).getDocument { snapshot, _ in
-            let isFolllowed = snapshot?.exists ?? false
-            completion(isFolllowed)
-        }
-    }
-    
-    func fetchTweets(completion: @escaping([Tweet]) -> Void) {
-        COLLECTION_TWEETS.whereField("uid", isEqualTo: self.id).getDocuments { snapshot, _ in
-            guard let documents = snapshot?.documents else {
-                completion([])
-                return
-            }
-            completion(documents.map({ Tweet(dictionary: $0.data()) }))
-        }
-    }
-    
     struct Stats {
         let followers: Int
         let following: Int

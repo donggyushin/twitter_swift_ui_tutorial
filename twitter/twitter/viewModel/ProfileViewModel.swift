@@ -60,21 +60,37 @@ class ProfileViewModel: ObservableObject {
     }
     
     private func updateUserStats() {
-        user.fetchStats { stats in
-            self.user.stats = stats
-        }
+        userRepository.fetchStats(id: user.id).subscribe(onNext: {[weak self] result in
+            switch result {
+            case .success(let stats):
+                self?.user.stats = stats
+            case .failure(let error):
+                print("DEBUG: error: \(error.localizedDescription)")
+            }
+        }).disposed(by: disposeBag)
     }
     
     private func checkIfUserIsFollowed() {
-        self.user.checkIsFollowed { isFollowed in
-            self.user.isFollowed = isFollowed
-        }
+        
+        userRepository.checkIsFollowed(userId: user.id).subscribe(onNext: { [weak self] result in
+            switch result {
+            case .success(let bool):
+                self?.user.isFollowed = bool
+            case .failure(let error):
+                print("DEBUG: error: \(error.localizedDescription)")
+            }
+        }).disposed(by: disposeBag)
     }
     
     private func fetchUserTweets() {
-        user.fetchTweets { tweets in
-            self.userTweets = tweets
-        }
+        tweetRepository.fetchTweets(userId: user.id).subscribe(onNext: { [weak self] result in
+            switch result {
+            case .success(let tweets):
+                self?.userTweets = tweets
+            case .failure(let error):
+                print("DEBUG: error: \(error.localizedDescription)")
+            }
+        }).disposed(by: disposeBag)
     }
     
     private func fetchLikedTweets() {

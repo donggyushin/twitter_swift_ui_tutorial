@@ -68,4 +68,41 @@ class UserRepositoryImpl: UserRepository {
             return Disposables.create()
         }
     }
+    
+    func fetchStats(id: String) -> Observable<Result<TwitterUser.Stats, Error>> {
+        return .create { observer in
+            
+            let followingRef = COLLECTION_FOLLOWING.document(id).collection("user-following")
+            let followersRef = COLLECTION_FOLLOWERS.document(id).collection("user-followers")
+            
+            followersRef.getDocuments { snapshot, _ in
+                let followers = snapshot?.count ?? 0
+                followingRef.getDocuments { snapshot, _ in
+                    let following = snapshot?.count ?? 0
+                    observer.onNext(.success(.init(followers: followers, following: following)))
+                    observer.onCompleted()
+                }
+            }
+            
+            return Disposables.create()
+        }
+    }
+    
+    func checkIsFollowed(userId: String) -> Observable<Result<Bool, Error>> {
+        return .create { observer in
+            
+            guard let currentUid = Auth.auth().currentUser?.uid else {
+                observer.onNext(.success(false))
+                observer.onCompleted()
+                return Disposables.create() }
+            
+            let followingRef = COLLECTION_FOLLOWING.document(currentUid).collection("user-following")
+            followingRef.document(userId).getDocument { snapshot, _ in
+                observer.onNext(.success(snapshot?.exists ?? false))
+                observer.onCompleted()
+            }
+            
+            return Disposables.create()
+        }
+    }
 }
