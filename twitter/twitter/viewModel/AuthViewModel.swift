@@ -19,7 +19,7 @@ class AuthViewModel: ObservableObject {
     
     static let shared = AuthViewModel(userRepository: RepositoryDependency.resolve().userRepository)
     
-    private let userRepository: UserRepository
+    let userRepository: UserRepository
     private let disposeBag = DisposeBag()
     
     init(userRepository: UserRepository) {
