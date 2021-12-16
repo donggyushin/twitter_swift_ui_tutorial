@@ -6,6 +6,8 @@
 //
 
 import RxSwift
+import Firebase
+import UIKit
 
 protocol UserRepository {
     func fetchUsers() -> Observable<Result<[TwitterUser], Error>>
@@ -13,4 +15,8 @@ protocol UserRepository {
     func unfollow(userId: String) -> Observable<Result<Bool, Error>>
     func fetchStats(id: String) -> Observable<Result<TwitterUser.Stats, Error>>
     func checkIsFollowed(userId: String) -> Observable<Result<Bool, Error>>
+    func signOut()
+    func login(email: String, password: String) -> Observable<Result<User, Error>>
+    func registerUser(email: String, password: String, username: String, fullname: String, profileImage: UIImage) -> Observable<Result<User, Error>>
+    func fetchUser() -> Observable<Result<TwitterUser, Error>>
 }

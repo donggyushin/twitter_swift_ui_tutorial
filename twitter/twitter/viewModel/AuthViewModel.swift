@@ -8,6 +8,7 @@
 import SwiftUI
 import UIKit
 import Firebase
+import RxSwift
 
 class AuthViewModel: ObservableObject {
     
@@ -16,83 +17,57 @@ class AuthViewModel: ObservableObject {
     @Published var error: Error?
     @Published var user: TwitterUser?
     
-    static let shared = AuthViewModel()
+    static let shared = AuthViewModel(userRepository: RepositoryDependency.resolve().userRepository)
     
-    init() {
+    private let userRepository: UserRepository
+    private let disposeBag = DisposeBag()
+    
+    init(userRepository: UserRepository) {
+        self.userRepository = userRepository
         self.userSession = Auth.auth().currentUser
         fetchUser()
     }
     
     func signOut() {
         self.userSession = nil
-        try? Auth.auth().signOut()
+        userRepository.signOut()
     }
     
     func login(email: String, password: String) {
-        Auth.auth().signIn(withEmail: email, password: password) { result, error in
-            if let error = error {
-                self.error = error
-                return
+        userRepository.login(email: email, password: password).subscribe(onNext: {[weak self] result in
+            switch result {
+            case .failure(let error):
+                self?.error = error
+            case .success(let user):
+                self?.userSession = user
+                self?.user = nil
+                self?.fetchUser()
             }
-            self.userSession = result?.user
-            self.user = nil 
-            self.fetchUser()
-        }
+        }).disposed(by: disposeBag)
     }
     
     func registerUser(email: String, password: String, username: String, fullname: String, profileImage: UIImage) {
         
-        guard let imageData = profileImage.jpegData(compressionQuality: 0.3) else { return }
-        let filename = NSUUID().uuidString
-        let storageRef = Storage.storage().reference().child(filename)
-        storageRef.putData(imageData, metadata: nil) { _, error in
-            if let error = error {
-                self.error = error
-                return
+        userRepository.registerUser(email: email, password: password, username: username, fullname: fullname, profileImage: profileImage).subscribe(onNext: { [weak self] result in
+            switch result {
+            case .success(let user):
+                self?.userSession = user
+                self?.fetchUser()
+            case .failure(let error):
+                self?.error = error
             }
-            
-            storageRef.downloadURL { url, _ in
-                guard let profileImageUrl = url?.absoluteString else { return }
-                
-                
-                Auth.auth().createUser(withEmail: email, password: password) { result, error in
-                    if let error = error {
-                        self.error = error
-                        return
-                    }
-                    
-                    guard let user = result?.user else { return }
-                    
-                    let data: [String: Any] = [
-                        "email": email,
-                        "fullname": fullname,
-                        "username": username.lowercased(),
-                        "profileImageUrl": profileImageUrl,
-                        "uid": user.uid
-                    ]
-                    
-                    Firestore.firestore().collection("users").document(user.uid).setData(data) { error in
-                        self.userSession = user
-                        self.fetchUser()
-                        if let error = error {
-                            self.error = error
-                            return
-                        }
-                    }
-                    
-                }
-                
-            }
-        }
+        }).disposed(by: disposeBag)
+        
     }
     
     func fetchUser() {
-        guard let uid = userSession?.uid else { return }
-        Firestore.firestore().collection("users").document(uid).getDocument { snapshot, _ in
-            guard let data = snapshot?.data() else { return }
-            let user: TwitterUser = .init(dictionary: data)
-            self.user = user
-            print("DEBUG: user: \(user.fullname)")
-        }
+        userRepository.fetchUser().subscribe(onNext: { [weak self] result in
+            switch result {
+            case .success(let user):
+                self?.user = user
+            case .failure(let error):
+                self?.error = error
+            }
+        }).disposed(by: disposeBag)
     }
 }

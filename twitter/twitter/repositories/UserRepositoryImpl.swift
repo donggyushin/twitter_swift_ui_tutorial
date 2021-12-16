@@ -7,8 +7,88 @@
 
 import RxSwift
 import Firebase
+import UIKit
 
 class UserRepositoryImpl: UserRepository {
+    
+    func fetchUser() -> Observable<Result<TwitterUser, Error>> {
+        return .create { observer in
+            
+            guard let uid = Auth.auth().currentUser?.uid else { return Disposables.create() }
+            Firestore.firestore().collection("users").document(uid).getDocument { snapshot, _ in
+                guard let data = snapshot?.data() else { return }
+                observer.onNext(.success(.init(dictionary: data)))
+                observer.onCompleted()
+            }
+            
+            return Disposables.create()
+        }
+    }
+    
+    func registerUser(email: String, password: String, username: String, fullname: String, profileImage: UIImage) -> Observable<Result<User, Error>> {
+        return .create { observer in
+            
+            guard let imageData = profileImage.jpegData(compressionQuality: 0.3) else { return Disposables.create() }
+            
+            let filename = NSUUID().uuidString
+            let storageRef = Storage.storage().reference().child(filename)
+            storageRef.putData(imageData, metadata: nil) { _, error in
+                if let error = error {
+                    observer.onNext(.failure(error))
+                    observer.onCompleted()
+                    return
+                }
+                
+                storageRef.downloadURL { url, _ in
+                    guard let profileImageUrl = url?.absoluteString else { return }
+                    
+                    
+                    Auth.auth().createUser(withEmail: email, password: password) { result, error in
+                        if let error = error {
+                            observer.onNext(.failure(error))
+                            observer.onCompleted()
+                            return
+                        }
+                        
+                        guard let user = result?.user else { return }
+                        
+                        let data: [String: Any] = [
+                            "email": email,
+                            "fullname": fullname,
+                            "username": username.lowercased(),
+                            "profileImageUrl": profileImageUrl,
+                            "uid": user.uid
+                        ]
+                        
+                        Firestore.firestore().collection("users").document(user.uid).setData(data) { error in
+                            
+                            observer.onNext(.success(user))
+                            observer.onCompleted()
+                        }
+                        
+                    }
+                    
+                }
+            }
+            
+            return Disposables.create()
+        }
+    }
+    
+    func login(email: String, password: String) -> Observable<Result<User, Error>> {
+        return .create { observer in
+            Auth.auth().signIn(withEmail: email, password: password) { result, error in
+                if let error = error {
+                    observer.onNext(.failure(error))
+                } else if let user = result?.user {
+                    observer.onNext(.success(user))
+                }
+                observer.onCompleted()
+            }
+            return Disposables.create()
+        }
+    }
+    
     func fetchUsers() -> Observable<Result<[TwitterUser], Error>> {
         return Observable.create { observer in
             COLLECTION_USERS.getDocuments { snapshot, error in
@@ -104,5 +184,9 @@ class UserRepositoryImpl: UserRepository {
             
             return Disposables.create()
         }
+    }
+    
+    func signOut() {
+        try? Auth.auth().signOut()
     }
 }
