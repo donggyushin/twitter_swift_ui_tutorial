@@ -6,6 +6,7 @@
    - [State](#State)
    - [ObservedObject](#ObservedObject)
    - [EnvironmentObject](#EnvironmentObject)
+6. [CodeCoverage](#CodeCoverage)
 
 # twitter_swift_ui_tutorial
 
@@ -60,3 +61,8 @@ API를 Firestore 및 데이터 모델과 통합하는 작업, 유저를 팔로�
 ## EnvironmentObject
 
 - 모든 view가 읽을 수 있는 shared data
+
+
+# CodeCoverage
+<img width="1000" alt="스크린샷 2021-12-16 오후 8 01 36" src="https://user-images.githubusercontent.com/34573243/146360098-fc56c234-8e32-4bb9-9cc6-6f3f972548e0.png">
+
