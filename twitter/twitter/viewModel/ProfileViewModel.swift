@@ -15,12 +15,14 @@ class ProfileViewModel: ObservableObject {
     @Published var user: TwitterUser
     
     private let tweetRepository: TweetRepository
+    private let userRepository: UserRepository
     
     private let disposeBag = DisposeBag()
     
-    init(user: TwitterUser, tweetRepository: TweetRepository) {
+    init(user: TwitterUser, tweetRepository: TweetRepository, userRepository: UserRepository) {
         self.user = user
         self.tweetRepository = tweetRepository
+        self.userRepository = userRepository
         checkIfUserIsFollowed()
         fetchUserTweets()
         fetchLikedTweets()
@@ -28,25 +30,25 @@ class ProfileViewModel: ObservableObject {
     }
     
     func follow() {
-        guard let currentUid = Auth.auth().currentUser?.uid else { return }
-        let followingRef = COLLECTION_FOLLOWING.document(currentUid).collection("user-following")
-        let follwersRef = COLLECTION_FOLLOWERS.document(user.id).collection("user-followers")
-        followingRef.document(user.id).setData([:]) { _ in
-            follwersRef.document(currentUid).setData([:]) { _ in
-                self.user.isFollowed = true
+        userRepository.follow(userId: user.id).subscribe(onNext: { [weak self] result in
+            switch result {
+            case .success(let bool):
+                self?.user.isFollowed = bool
+            case .failure(let error):
+                print("DEBUG: error: \(error.localizedDescription)")
             }
-        }
+        }).disposed(by: disposeBag)
     }
     
     func unfollow() {
-        guard let currentUid = Auth.auth().currentUser?.uid else { return }
-        let followingRef = COLLECTION_FOLLOWING.document(currentUid).collection("user-following")
-        let follwersRef = COLLECTION_FOLLOWERS.document(user.id).collection("user-followers")
-        followingRef.document(user.id).delete { _ in
-            follwersRef.document(currentUid).delete { _ in
-                self.user.isFollowed = false
+        userRepository.unfollow(userId: user.id).subscribe(onNext: { [weak self] result in
+            switch result {
+            case .success(let bool):
+                self?.user.isFollowed = bool
+            case .failure(let error):
+                print("DEBUG: error: \(error.localizedDescription)")
             }
-        }
+        }).disposed(by: disposeBag)
     }
     
     func tweets(filter: TweetFilterOptions) -> [Tweet] {
