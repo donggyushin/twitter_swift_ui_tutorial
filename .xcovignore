@@ -1,0 +1,10 @@
+# Api files
+- .*Impl.swift
+
+# View files
+- .*View.swift
+- .*Bubble.swift
+- .*SearchBar.swift
+- .*Extension.swift
+- .*Cell.swift
+- .*ImagePicker.swift
