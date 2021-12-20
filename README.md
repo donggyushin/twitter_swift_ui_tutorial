@@ -63,8 +63,10 @@ API를 Firestore 및 데이터 모델과 통합하는 작업, 유저를 팔로�
 
 - 모든 view가 읽을 수 있는 shared data
 
-
 # CodeCoverage
+```
+xcov -p twitter/twitter.xcodeproj -s twitter -o xcov_output
+```
 ![스크린샷 2021-12-16 오후 9 55 27](https://user-images.githubusercontent.com/34573243/146376038-29a766cb-44bf-4d98-b99e-2eb5d760d932.png)
 
 
