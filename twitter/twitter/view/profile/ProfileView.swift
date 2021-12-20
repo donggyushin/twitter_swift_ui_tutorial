@@ -13,7 +13,7 @@ struct ProfileView: View {
     @ObservedObject var viewModel: ProfileViewModel
     
     init(user: TwitterUser) {
-        self.viewModel = .init(user: user, tweetRepository: RepositoryDependency.resolve().tweetRepository, userRepository: RepositoryDependency.resolve().userRepository)
+        self.viewModel = ViewModelDependency.resolve().profileViewModelFactory(user)
     }
     
     var body: some View {
