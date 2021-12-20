@@ -43,5 +43,13 @@ class AuthViewModelTest: XCTestCase {
         XCTAssertEqual(viewModel.error?.localizedDescription, "테스트 에러입니다.")
     }
     
-    
+    func testFetchUser() {
+        viewModel.fetchUser()
+        let expectation = XCTestExpectation(description: "APIPrivoderTaskExpectation")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 5)
+        XCTAssertEqual(viewModel.user?.id, "1")
+    }
 }
