@@ -11,7 +11,7 @@ import LazyViewSwiftUI
 struct SearchView: View {
     
     @State var searchTest: String = ""
-    @ObservedObject var viewModel = SearchViewModel(userRepository: RepositoryDependency.resolve().userRepository)
+    @ObservedObject var viewModel = ViewModelDependency.resolve().searchViewModel
     
     var body: some View {
         ScrollView {
