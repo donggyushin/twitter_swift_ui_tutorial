@@ -39,6 +39,7 @@ struct Tweet: Identifiable, Codable {
                 tweets = loadedTweetArray
             }
         }
+        tweets = tweets.filter({ $0.id.isEmpty == false })
         return tweets
     }
 }

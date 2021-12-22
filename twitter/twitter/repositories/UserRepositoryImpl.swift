@@ -14,7 +14,7 @@ class UserRepositoryImpl: UserRepository {
     func fetchUser() -> Observable<Result<TwitterUser, Error>> {
         return .create { observer in
             
-            guard let uid = Auth.auth().currentUser?.uid else { return Disposables.create() }
+            guard let uid = Auth.auth().currentUser?.uid else { return Disposables.create()}
             Firestore.firestore().collection("users").document(uid).getDocument { snapshot, _ in
                 guard let data = snapshot?.data() else { return }
                 observer.onNext(.success(.init(dictionary: data)))

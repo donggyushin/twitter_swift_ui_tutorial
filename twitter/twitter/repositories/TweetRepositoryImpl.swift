@@ -17,7 +17,7 @@ class TweetRepositoryImpl: TweetRepository {
                     observer.onNext(.success([]))
                     observer.onCompleted()
                     return }
-                
+
                 observer.onNext(.success(documents.map({ Tweet(dictionary: $0.data()) })))
                 observer.onCompleted()
             }
