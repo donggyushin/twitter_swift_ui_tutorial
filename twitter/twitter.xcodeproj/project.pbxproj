@@ -38,6 +38,7 @@
 		7033B72D2771F057001B0030 /* TweetActionViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7033B72C2771F057001B0030 /* TweetActionViewModelTest.swift */; };
 		703F22BE2748BE6700A3629C /* PasswordTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703F22BD2748BE6700A3629C /* PasswordTextFieldView.swift */; };
 		703F22C02748BF4C00A3629C /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703F22BF2748BF4C00A3629C /* RegistrationView.swift */; };
+		704809622773566800A8F539 /* FeedViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704809612773566800A8F539 /* FeedViewModelTest.swift */; };
 		704F245227636FC1000C6C6A /* TweetActionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704F245127636FC1000C6C6A /* TweetActionViewModel.swift */; };
 		7057476F274D09A1003AE7F1 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7057476E274D09A1003AE7F1 /* AuthViewModel.swift */; };
 		70574772274D1C14003AE7F1 /* ScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70574771274D1C14003AE7F1 /* ScrollView+Extension.swift */; };
@@ -122,6 +123,7 @@
 		7033B72C2771F057001B0030 /* TweetActionViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetActionViewModelTest.swift; sourceTree = "<group>"; };
 		703F22BD2748BE6700A3629C /* PasswordTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextFieldView.swift; sourceTree = "<group>"; };
 		703F22BF2748BF4C00A3629C /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		704809612773566800A8F539 /* FeedViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModelTest.swift; sourceTree = "<group>"; };
 		704F245127636FC1000C6C6A /* TweetActionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetActionViewModel.swift; sourceTree = "<group>"; };
 		7057476E274D09A1003AE7F1 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		70574771274D1C14003AE7F1 /* ScrollView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScrollView+Extension.swift"; sourceTree = "<group>"; };
@@ -340,6 +342,7 @@
 				70C3509D27709E1900F37157 /* ProfileViewModelTest.swift */,
 				70325BE72770A78B00A89B37 /* SearchViewModelTest.swift */,
 				7033B72C2771F057001B0030 /* TweetActionViewModelTest.swift */,
+				704809612773566800A8F539 /* FeedViewModelTest.swift */,
 			);
 			path = viewModels;
 			sourceTree = "<group>";
@@ -711,6 +714,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7033B72D2771F057001B0030 /* TweetActionViewModelTest.swift in Sources */,
+				704809622773566800A8F539 /* FeedViewModelTest.swift in Sources */,
 				70325BE82770A78B00A89B37 /* SearchViewModelTest.swift in Sources */,
 				70C3509E27709E1900F37157 /* ProfileViewModelTest.swift in Sources */,
 				705FC816276B680000584274 /* AuthViewModelTest.swift in Sources */,

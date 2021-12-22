@@ -50,7 +50,8 @@ class TweetRepositoryTest: TweetRepository {
     
     func fetchTweets() -> Observable<Result<[Tweet], Error>> {
         return .create { observer in
-            observer.onNext(.success([]))
+            let tweet: Tweet = .init(dictionary: [:])
+            observer.onNext(.success([tweet]))
             observer.onCompleted()
             return Disposables.create()
         }
