@@ -8,6 +8,14 @@
 import RxSwift
 
 class TweetRepositoryTest: TweetRepository {
+    func uploadTweet(caption: String) -> Observable<Result<Bool, Error>> {
+        return .create { observer in
+            observer.onNext(.success(false))
+            observer.onCompleted()
+            return Disposables.create()
+        }
+    }
+    
     func likeTweet(tweet: Tweet) -> Observable<Result<Bool, Error>> {
         return .create { observer in
             observer.onNext(.success(true))

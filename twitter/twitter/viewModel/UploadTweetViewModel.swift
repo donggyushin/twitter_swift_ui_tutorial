@@ -7,31 +7,37 @@
 
 import SwiftUI
 import Firebase
+import RxSwift
+import Combine
 
 class UploadTweetViewModel: ObservableObject {
     
     @Binding var isPresented: Bool
+    private let tweetRepository: TweetRepository
+    private let disposeBag = DisposeBag()
+    @Published var published_isPresented = true
+    var subscriber: Set<AnyCancellable> = .init()
     
-    init(isPresented: Binding<Bool>) {
+    init(isPresented: Binding<Bool>, tweetRepository: TweetRepository) {
         self._isPresented = isPresented
+        self.tweetRepository = tweetRepository
+        bind()
+    }
+    
+    private func bind() {
+        $published_isPresented.filter({ !$0 }).sink { [weak self] isPresented in
+            self?.isPresented = isPresented
+        }.store(in: &subscriber)
     }
     
     func uploadTweet(caption: String) {
-        guard let user = AuthViewModel.shared.user else { return }
-        let docRef = COLLECTION_TWEETS.document()
-        let data: [String: Any] = [
-            "uid": user.id,
-            "caption": caption,
-            "fullname": user.fullname,
-            "timestamp": Timestamp(date: Date()),
-            "username": user.username,
-            "profileImageUrl": user.profileImageUrl,
-            "likes": 0,
-            "id": docRef.documentID
-        ]
-        docRef.setData(data) { _ in
-            print("DEBUG: upload tweet...")
-            self.isPresented = false 
-        }
+        tweetRepository.uploadTweet(caption: caption).subscribe(onNext: { [weak self] result in
+            switch result {
+            case .success(let isPresented):
+                self?.published_isPresented = isPresented
+            case .failure(let error):
+                print("DEBUG: \(error.localizedDescription)")
+            }
+        }).disposed(by: disposeBag)
     }
 }

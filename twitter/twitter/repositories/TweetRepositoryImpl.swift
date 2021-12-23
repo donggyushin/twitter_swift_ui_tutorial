@@ -10,6 +10,30 @@ import Firebase
 
 class TweetRepositoryImpl: TweetRepository {
     
+    func uploadTweet(caption: String) -> Observable<Result<Bool, Error>> {
+        return .create { observer in
+            
+            guard let user = AuthViewModel.shared.user else { return Disposables.create() }
+            let docRef = COLLECTION_TWEETS.document()
+            let data: [String: Any] = [
+                "uid": user.id,
+                "caption": caption,
+                "fullname": user.fullname,
+                "timestamp": Timestamp(date: Date()),
+                "username": user.username,
+                "profileImageUrl": user.profileImageUrl,
+                "likes": 0,
+                "id": docRef.documentID
+            ]
+            docRef.setData(data) { _ in
+                observer.onNext(.success(false))
+                observer.onCompleted()
+            }
+            
+            return Disposables.create()
+        }
+    }
+    
     func fetchTweets() -> Observable<Result<[Tweet], Error>> {
         return .create { observer in
             COLLECTION_TWEETS.getDocuments { snapshot, _ in

@@ -17,7 +17,7 @@ struct NewTweetView: View {
     
     init(isPresented: Binding<Bool>) {
         self._isShowingNewTweetView = isPresented
-        self.uploadTweetViewModel = .init(isPresented: isPresented)
+        self.uploadTweetViewModel = ViewModelDependency.resolve().uploadTweetViewModelFactory(isPresented)
     }
     
     var body: some View {
