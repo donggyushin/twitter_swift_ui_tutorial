@@ -52,6 +52,7 @@ class AuthViewModel: ObservableObject {
             switch result {
             case .success(let user):
                 self?.userSession = user
+                self?.user = nil 
                 self?.fetchUser()
             case .failure(let error):
                 self?.error = error
