@@ -11,6 +11,7 @@ import RxSwift
 
 class FeedViewModel: ObservableObject {
     @Published var tweets: [Tweet] = []
+    @Published var isShowingNewTweetView = false
     private var subscriber = Set<AnyCancellable>()
     private let disposeBag = DisposeBag()
     

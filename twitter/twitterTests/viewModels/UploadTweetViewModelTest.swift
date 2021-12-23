@@ -11,13 +11,15 @@ import SwiftUI
 
 class UploadTweetViewModelTest: XCTestCase {
     func testUploadTweet() {
-        let viewModel = ViewModelDependency.resolve().uploadTweetViewModelFactoryTest(.constant(true))
+        let feedView: FeedView = .init(viewModel: ViewModelDependency.resolve().feedViewModelTest)
+        let viewModel = ViewModelDependency.resolve().uploadTweetViewModelFactoryTest(feedView.$viewModel.isShowingNewTweetView)
         viewModel.uploadTweet(caption: "")
         let expectation: XCTestExpectation = .init(description: "")
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
             expectation.fulfill()
         })
         wait(for: [expectation], timeout: 5)
-        XCTAssertFalse(viewModel.published_isPresented)
+        XCTAssertFalse(feedView.viewModel.isShowingNewTweetView)
+        XCTAssertFalse(viewModel.isPresented)
     }
 }
