@@ -38,8 +38,8 @@ struct ProfileHeaderActionButtonsView: View {
                         .shadow(radius: 5)
                 }
                 
-                Button {
-                    
+                NavigationLink {
+                    ChatView()
                 } label: {
                     Text("Message")
                         .frame(width: (screenWidth - 60) / 2, height: 40)
