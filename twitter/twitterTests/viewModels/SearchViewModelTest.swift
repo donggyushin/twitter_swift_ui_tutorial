@@ -15,12 +15,22 @@ class SearchViewModelTest: XCTestCase {
         let vm = ViewModelDependency.resolve().searchViewModelTest
         
         let expectation: XCTestExpectation = .init(description: "testInitExpectation")
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             expectation.fulfill()
         }
         
         wait(for: [expectation], timeout: 5)
         
         XCTAssertEqual(0, vm.users.count)
+    }
+    
+    func testFilteredUsers() {
+        let vm = ViewModelDependency.resolve().searchViewModelTest
+        let expectation: XCTestExpectation = .init(description: "testInitExpectation")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 5)
+        XCTAssertEqual(vm.filteredUsers(query: "asd").count, 0)
     }
 }

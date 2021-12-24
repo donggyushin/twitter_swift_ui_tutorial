@@ -53,6 +53,7 @@
 		7072070E277581490014A659 /* ChatRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7072070D277581490014A659 /* ChatRepositoryImpl.swift */; };
 		707207102775846D0014A659 /* ChatRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7072070F2775846D0014A659 /* ChatRepository.swift */; };
 		707207122775848C0014A659 /* ChatRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707207112775848C0014A659 /* ChatRepositoryTest.swift */; };
+		7072071427758C060014A659 /* ChatViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7072071327758C060014A659 /* ChatViewModelTest.swift */; };
 		7072FF9D2746302B0074DBD1 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7072FF9C2746302B0074DBD1 /* Message.swift */; };
 		7085ADAA275E1A1500139FC2 /* UploadTweetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7085ADA9275E1A1500139FC2 /* UploadTweetViewModel.swift */; };
 		708F71DA276B396C00EBE84E /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 708F71D9276B396C00EBE84E /* RxSwift */; };
@@ -143,6 +144,7 @@
 		7072070D277581490014A659 /* ChatRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRepositoryImpl.swift; sourceTree = "<group>"; };
 		7072070F2775846D0014A659 /* ChatRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRepository.swift; sourceTree = "<group>"; };
 		707207112775848C0014A659 /* ChatRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRepositoryTest.swift; sourceTree = "<group>"; };
+		7072071327758C060014A659 /* ChatViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModelTest.swift; sourceTree = "<group>"; };
 		7072FF9C2746302B0074DBD1 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		7085ADA9275E1A1500139FC2 /* UploadTweetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadTweetViewModel.swift; sourceTree = "<group>"; };
 		708F71DB276B3A4700EBE84E /* TweetRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetRepositoryImpl.swift; sourceTree = "<group>"; };
@@ -355,6 +357,7 @@
 				7033B72C2771F057001B0030 /* TweetActionViewModelTest.swift */,
 				704809612773566800A8F539 /* FeedViewModelTest.swift */,
 				70E1498527746D9C00D832FE /* UploadTweetViewModelTest.swift */,
+				7072071327758C060014A659 /* ChatViewModelTest.swift */,
 			);
 			path = viewModels;
 			sourceTree = "<group>";
@@ -733,6 +736,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7033B72D2771F057001B0030 /* TweetActionViewModelTest.swift in Sources */,
+				7072071427758C060014A659 /* ChatViewModelTest.swift in Sources */,
 				704809622773566800A8F539 /* FeedViewModelTest.swift in Sources */,
 				70325BE82770A78B00A89B37 /* SearchViewModelTest.swift in Sources */,
 				70E1498627746D9C00D832FE /* UploadTweetViewModelTest.swift in Sources */,

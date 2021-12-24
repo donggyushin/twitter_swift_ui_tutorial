@@ -15,6 +15,7 @@ class ChatViewModel: ObservableObject {
     init(user: TwitterUser, chatRepository: ChatRepository) {
         self.user = user
         self.chatRepository = chatRepository
+        fetchMessages()
     }
     
     func fetchMessages() {
