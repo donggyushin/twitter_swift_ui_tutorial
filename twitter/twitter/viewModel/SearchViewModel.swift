@@ -34,6 +34,6 @@ class SearchViewModel: ObservableObject {
     
     func filteredUsers() -> [TwitterUser] {
         let lowerCasesedQuery = searchText.lowercased()
-        return users.filter({ $0.fullname.lowercased().contains(lowerCasesedQuery) || $0.username.lowercased().contains(lowerCasesedQuery) })
+        return lowerCasesedQuery.isEmpty ? users : users.filter({ $0.fullname.lowercased().contains(lowerCasesedQuery) || $0.username.lowercased().contains(lowerCasesedQuery) })
     }
 }

@@ -17,7 +17,7 @@ struct NewMessageView: View {
             SearchBar(text: $viewModel.searchText)
                 .padding(.top)
             VStack {
-                ForEach(viewModel.users) { user in
+                ForEach(viewModel.filteredUsers()) { user in
                     Button {
                         self.isShowingNewMessageView.toggle()
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {

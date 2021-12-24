@@ -17,7 +17,7 @@ struct SearchView: View {
                 SearchBar(text: $viewModel.searchText)
                     .padding(.top)
                 VStack {
-                    ForEach(viewModel.searchText.isEmpty ? viewModel.users : viewModel.filteredUsers()) { user in
+                    ForEach(viewModel.filteredUsers()) { user in
                         NavigationLink {
                             LazyView(ProfileView(user: user))
                         } label: {
