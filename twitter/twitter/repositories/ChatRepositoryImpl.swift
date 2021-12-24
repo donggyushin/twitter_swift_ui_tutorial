@@ -13,7 +13,6 @@ class ChatRepositoryImpl: ChatRepository {
     
     func fetchRecentMessages() -> Observable<[Message]> {
         return .create { observer in
-            
             guard let uid = Auth.auth().currentUser?.uid else { return Disposables.create() }
             let query = COLLECTION_MESSAGES.document(uid).collection(self.RECENT_MESSAGES)
             query.order(by: "timestamp", descending: false).getDocuments { snapshot, _ in
@@ -22,7 +21,6 @@ class ChatRepositoryImpl: ChatRepository {
                 documents.forEach { document in
                     let messageData = document.data()
                     let uid = document.documentID
-                    
                     COLLECTION_USERS.document(uid).getDocument { snapshot, _ in
                         guard let data = snapshot?.data() else { return }
                         let user: TwitterUser = .init(dictionary: data)

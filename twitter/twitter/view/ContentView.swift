@@ -7,39 +7,47 @@
 
 import SwiftUI
 import Kingfisher
+import Combine
+import LazyViewSwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject var viewModel: AuthViewModel
+    @EnvironmentObject var authViewModel: AuthViewModel
+    @ObservedObject var viewModel: ContentViewModel = ViewModelDependency.resolve().contentViewModel
     
     var body: some View {
         Group {
-            if viewModel.userSession != nil {
+            if authViewModel.userSession != nil {
                 NavigationView {
-                    TabView {
+//                    TabView
+                    TabView(selection: $viewModel.currentTab)
+                    {
                         FeedView()
                             .tabItem {
                                 Image(systemName: "house")
                                 Text("Home")
                             }
+                            .tag(0)
                         SearchView()
                             .tabItem {
                                 Image(systemName: "magnifyingglass")
                                 Text("Search")
                             }
-
+                            .tag(1)
                         ConversationListView()
                             .tabItem {
                                 Image(systemName: "envelope")
                                 Text("Messages")
                             }
+                            .tag(2)
+                        
                     }
-                    .navigationTitle("Home")
+                    .navigationTitle(viewModel.navigationTitle())
                     .toolbar(content: {
                         ToolbarItem(placement: .navigationBarLeading) {
                             Button {
-                                viewModel.signOut()
+                                authViewModel.signOut()
                             } label: {
-                                KFImage(.init(string: viewModel.user?.profileImageUrl ?? ""))
+                                KFImage(.init(string: authViewModel.user?.profileImageUrl ?? ""))
                                     .resizable()
                                     .scaledToFill()
                                     .clipped()

@@ -23,6 +23,7 @@ class ConversationListViewModel: ObservableObject {
     
     init(chatRepository: ChatRepository) {
         self.chatRepository = chatRepository
+        fetchRecentMessages()
         listenRecentMessages()
         bind()
     }

@@ -57,13 +57,13 @@ struct ConversationListView: View {
             viewModel.fetchRecentMessages()
             viewModel.isPresent = true
         }.onDisappear {
-            viewModel.isPresent = false 
+            viewModel.isPresent = false
         }
     }
 }
 
-struct ConversationListView_Previews: PreviewProvider {
-    static var previews: some View {
-        ConversationListView()
-    }
-}
+//struct ConversationListView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ConversationListView()
+//    }
+//}
