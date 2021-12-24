@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import ActivityIndicatorView
+import SSToastMessage
 
 struct RegistrationView: View {
     
@@ -79,6 +81,7 @@ struct RegistrationView: View {
                         .cornerRadius(20)
                 }
                 .padding(.top, 40)
+                .disabled(viewModel.isLoading)
                 
                 Spacer()
                 
@@ -90,6 +93,13 @@ struct RegistrationView: View {
                 }
             }
                 .background(background_color)
+            
+            ActivityIndicatorView(isVisible: $viewModel.isLoading, type: .default)
+                .frame(width: 60, height: 60)
+                .foregroundColor(.white)
+        }
+        .present(isPresented: $viewModel.errorToastPresent, type: .toast, position: .top, closeOnTap: true, closeOnTapOutside: true) {
+            ToastErrorView(message: viewModel.error?.localizedDescription ?? "회원가입에 실패하였습니다.")
         }
     }
 }
