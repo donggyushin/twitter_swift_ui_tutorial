@@ -7,6 +7,7 @@
 import RxSwift
 protocol ChatRepository {
     func sendMessage(messageText: String, to: TwitterUser)
-    func listenRecentMessages() -> Observable<Message>
+    func listenRecentMessages() -> Observable<[Message]>
     func fetchRecentMessages() -> Observable<[Message]>
+    func listenMessages(user: TwitterUser) -> Observable<[Message]>
 }

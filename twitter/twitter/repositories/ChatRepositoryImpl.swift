@@ -16,7 +16,7 @@ class ChatRepositoryImpl: ChatRepository {
             
             guard let uid = Auth.auth().currentUser?.uid else { return Disposables.create() }
             let query = COLLECTION_MESSAGES.document(uid).collection(self.RECENT_MESSAGES)
-            query.order(by: "timestamp", descending: true).getDocuments { snapshot, _ in
+            query.order(by: "timestamp", descending: false).getDocuments { snapshot, _ in
                 guard let documents = snapshot?.documents else { return }
                 var messages: [Message] = []
                 documents.forEach { document in
@@ -39,14 +39,43 @@ class ChatRepositoryImpl: ChatRepository {
         }
     }
     
-    func listenRecentMessages() -> Observable<Message> {
+    func listenMessages(user: TwitterUser) -> Observable<[Message]> {
+        return .create { observer in
+            
+            guard let uid = Auth.auth().currentUser?.uid else { return Disposables.create() }
+            let query = COLLECTION_MESSAGES.document(uid).collection(user.id)
+            query.order(by: "timestamp", descending: false).addSnapshotListener { snapshot, _ in
+                guard let changes = snapshot?.documentChanges else { return }
+                var messages: [Message] = []
+                
+                changes.forEach { change in
+                    let messageData = change.document.data()
+                    guard let fromId = messageData["fromId"] as? String else { return }
+                    
+                    COLLECTION_USERS.document(fromId).getDocument { snapshot, _ in
+                        guard let data = snapshot?.data() else { return }
+                        let user: TwitterUser = .init(dictionary: data)
+                        messages.append(.init(user: user, dictionary: messageData))
+                        if messages.count == changes.count {
+                            messages.sort(by: { $0.timestamp.seconds < $1.timestamp.seconds })
+                            observer.onNext(messages)
+                        }
+                    }
+                }
+            }
+            
+            return Disposables.create()
+        }
+    }
+    
+    func listenRecentMessages() -> Observable<[Message]> {
         return .create { observer in
             
             guard let uid = Auth.auth().currentUser?.uid else { return Disposables.create() }
             let query = COLLECTION_MESSAGES.document(uid).collection(self.RECENT_MESSAGES)
-            query.order(by: "timestamp", descending: true).addSnapshotListener { snapshot, error in
+            query.order(by: "timestamp", descending: false).addSnapshotListener { snapshot, error in
                 guard let changes = snapshot?.documentChanges else { return }
-                
+                var messages: [Message] = []
                 changes.forEach { change in
                     let messageData = change.document.data()
                     let uid = change.document.documentID
@@ -54,7 +83,11 @@ class ChatRepositoryImpl: ChatRepository {
                     COLLECTION_USERS.document(uid).getDocument { snapshot, _ in
                         guard let data = snapshot?.data() else { return }
                         let user: TwitterUser = .init(dictionary: data)
-                        observer.onNext(.init(user: user, dictionary: messageData))
+                        messages.append(.init(user: user, dictionary: messageData))
+                        if changes.count == messages.count {
+                            messages.sort(by: { $0.timestamp.seconds > $1.timestamp.seconds })
+                            observer.onNext(messages)
+                        }
                     }
                 }
             }

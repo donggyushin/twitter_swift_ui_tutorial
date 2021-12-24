@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import LazyViewSwiftUI
 
 struct ProfileHeaderActionButtonsView: View {
     
@@ -39,7 +40,7 @@ struct ProfileHeaderActionButtonsView: View {
                 }
                 
                 NavigationLink {
-                    ChatView(user: viewModel.user)
+                    LazyView(ChatView(user: viewModel.user))
                 } label: {
                     Text("Message")
                         .frame(width: (screenWidth - 60) / 2, height: 40)

@@ -11,17 +11,15 @@ import Combine
 
 class ConversationListViewModel: ObservableObject {
     @Published var recentMessages: [Message] = []
-    @Published var isViewDisplayed = false
-    
     @Published var isShowingNewMessageView = false
     @Published var startChat = false
     @Published var userToChat: TwitterUser?
     
-    var subscriber: Set<AnyCancellable> = .init()
+    var isPresent = false
     
+    private var subscriber: Set<AnyCancellable> = .init()
     private let chatRepository: ChatRepository
     private let disposeBag = DisposeBag()
-    
     
     init(chatRepository: ChatRepository) {
         self.chatRepository = chatRepository
@@ -41,13 +39,13 @@ class ConversationListViewModel: ObservableObject {
         }).disposed(by: disposeBag)
     }
     
-    func listenRecentMessages() {
-        chatRepository.listenRecentMessages().subscribe(onNext: { [weak self] message in
-            if self?.isViewDisplayed == true {
-                if let deleteIndex = self?.recentMessages.enumerated().first(where: { $1.user.id == message.user.id }).map ({ $0.offset }) {
-                    self?.recentMessages.remove(at: deleteIndex)
-                }
-                self?.recentMessages.insert(message, at: 0)
+    private func listenRecentMessages() {
+        chatRepository.listenRecentMessages().subscribe(onNext: { [weak self] messages in
+            if self?.isPresent == true {
+                let user_ids_that_came_from_new_messages = messages.map({ $0.user.id })
+                var new_recentMessages = (self?.recentMessages.filter({ !user_ids_that_came_from_new_messages.contains($0.user.id) }) ?? [])
+                new_recentMessages.insert(contentsOf: messages, at: 0)
+                self?.recentMessages = new_recentMessages
             }
         }).disposed(by: disposeBag)
     }

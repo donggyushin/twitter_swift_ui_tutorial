@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct OtherChatBubble: View {
     
@@ -13,7 +14,7 @@ struct OtherChatBubble: View {
     
     var body: some View {
         HStack(alignment: .bottom) {
-            Image(message.user.profileImageUrl)
+            KFImage(.init(string: message.user.profileImageUrl))
                 .resizable()
                 .frame(width: 40, height: 40)
                 .scaledToFill()

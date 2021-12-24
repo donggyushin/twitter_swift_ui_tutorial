@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct ChatView: View {
-    
-    @State var messageText: String = ""
     @ObservedObject var viewModel: ChatViewModel
     
     init(user: TwitterUser) {
@@ -18,17 +16,25 @@ struct ChatView: View {
     
     var body: some View {
         VStack {
-            ScrollView {
-//                ForEach(MOCK_MESSAGES_DATA) { message in
-//                    if message.isFromCurrentUser {
-//                        MyChatBubble(message: message)
-//                    } else {
-//                        OtherChatBubble(message: message)
-//                    }
-//                }
+            ScrollViewReader { scrollProxy in
+                ScrollView {
+                    ForEach(viewModel.messages) { message in
+                        if message.isFromCurrentUser {
+                            MyChatBubble(message: message)
+                        } else {
+                            OtherChatBubble(message: message)
+                        }
+                    }.onChange(of: viewModel.messages) { newValue in
+                        if let id = newValue.last?.id {
+                            scrollProxy.scrollTo(id, anchor: .bottom)
+                        }
+                    }
+                }
             }
-            MessageInputView(messageText: $messageText, action: { messageText in 
-                viewModel.sendMessages(messageText: messageText)
+            
+            
+            MessageInputView(messageText: $viewModel.messageText, action: { 
+                viewModel.sendMessages()
             })
                 .padding()
         }.navigationTitle(viewModel.user.username)

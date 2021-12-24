@@ -6,10 +6,15 @@
 //
 
 import SwiftUI
+import RxSwift
 
 class ChatViewModel: ObservableObject {
     
+    @Published var messages: [Message] = []
+    @Published var messageText: String = ""
+    
     private let chatRepository: ChatRepository
+    private let disposeBag = DisposeBag()
     let user: TwitterUser
     
     init(user: TwitterUser, chatRepository: ChatRepository) {
@@ -18,11 +23,14 @@ class ChatViewModel: ObservableObject {
         fetchMessages()
     }
     
-    func fetchMessages() {
-        
+    private func fetchMessages() {
+        chatRepository.listenMessages(user: user).subscribe(onNext: { [weak self] messages in
+            self?.messages.append(contentsOf: messages)
+        }).disposed(by: disposeBag)
     }
     
-    func sendMessages(messageText: String) {
+    func sendMessages() {
         chatRepository.sendMessage(messageText: messageText, to: user)
+        messageText = "" 
     }
 }

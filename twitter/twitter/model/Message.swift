@@ -7,7 +7,11 @@
 
 import Firebase
 
-struct Message: Identifiable {
+struct Message: Identifiable, Equatable {
+    static func == (lhs: Message, rhs: Message) -> Bool {
+        lhs.id == rhs.id
+    }
+    
     let id: String
     let text: String
     let user: TwitterUser

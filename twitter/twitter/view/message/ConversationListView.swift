@@ -15,7 +15,7 @@ struct ConversationListView: View {
         ZStack(alignment: .bottomTrailing) {
             NavigationLink(isActive: $viewModel.startChat) {
                 if let user = viewModel.userToChat {
-                    ChatView(user: user)
+                    LazyView(ChatView(user: user))
                 }
             } label: {}
 
@@ -54,10 +54,10 @@ struct ConversationListView: View {
                 NewMessageView(isShowingNewMessageView: $viewModel.isShowingNewMessageView, userToChat: $viewModel.userToChat)
             }
         }.onAppear {
-            viewModel.isViewDisplayed = true
             viewModel.fetchRecentMessages()
+            viewModel.isPresent = true
         }.onDisappear {
-            viewModel.isViewDisplayed = false 
+            viewModel.isPresent = false 
         }
     }
 }
