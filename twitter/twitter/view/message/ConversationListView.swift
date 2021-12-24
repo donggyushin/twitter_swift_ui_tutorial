@@ -55,6 +55,11 @@ struct ConversationListView: View {
             .sheet(isPresented: $isShowingNewMessageView) {
                 NewMessageView(isShowingNewMessageView: $isShowingNewMessageView, startChat: $startChat)
             }
+        }.onAppear {
+            viewModel.isViewDisplayed = true
+            viewModel.fetchRecentMessages()
+        }.onDisappear {
+            viewModel.isViewDisplayed = false 
         }
     }
 }

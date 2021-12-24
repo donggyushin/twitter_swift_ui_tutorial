@@ -6,9 +6,17 @@
 //
 import RxSwift
 class ChatRepositoryTest: ChatRepository {
-    func fetchRecentMessages() -> Observable<Message> {
+    func fetchRecentMessages() -> Observable<[Message]> {
         return .create { observer in
-            observer.onNext(.init(user: .init(dictionary: [:]), dictionary: [:]))
+            observer.onNext([])
+            observer.onCompleted()
+            return Disposables.create()
+        }
+    }
+    
+    func listenRecentMessages() -> Observable<[Message]> {
+        return .create { observer in
+            observer.onNext([])
             observer.onCompleted()
             return Disposables.create()
         }

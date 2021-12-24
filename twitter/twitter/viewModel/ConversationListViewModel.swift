@@ -10,19 +10,28 @@ import RxSwift
 
 class ConversationListViewModel: ObservableObject {
     @Published var recentMessages: [Message] = []
+    @Published var isViewDisplayed = false
     
     private let chatRepository: ChatRepository
     private let disposeBag = DisposeBag()
     
+    
     init(chatRepository: ChatRepository) {
         self.chatRepository = chatRepository
-        fetchRecentMessages()
+        listenRecentMessages()
     }
     
     func fetchRecentMessages() {
-        chatRepository.fetchRecentMessages().subscribe(onNext: { [weak self] message in
-            self?.recentMessages.append(message)
-//            self?.recentMessages.append(contentsOf: messages)
+        chatRepository.fetchRecentMessages().subscribe(onNext: { [weak self] messages in
+            self?.recentMessages = messages
+        }).disposed(by: disposeBag)
+    }
+    
+    func listenRecentMessages() {
+        chatRepository.listenRecentMessages().subscribe(onNext: { [weak self] messages in
+            if self?.isViewDisplayed == true {
+                self?.recentMessages = messages
+            }
         }).disposed(by: disposeBag)
     }
 }

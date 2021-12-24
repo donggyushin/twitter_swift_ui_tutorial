@@ -11,7 +11,35 @@ class ChatRepositoryImpl: ChatRepository {
     
     private let RECENT_MESSAGES = "recent-messages"
     
-    func fetchRecentMessages() -> Observable<Message> {
+    func fetchRecentMessages() -> Observable<[Message]> {
+        return .create { observer in
+            
+            guard let uid = Auth.auth().currentUser?.uid else { return Disposables.create() }
+            let query = COLLECTION_MESSAGES.document(uid).collection(self.RECENT_MESSAGES)
+            query.order(by: "timestamp", descending: true).getDocuments { snapshot, _ in
+                guard let documents = snapshot?.documents else { return }
+                var messages: [Message] = []
+                documents.forEach { document in
+                    let messageData = document.data()
+                    let uid = document.documentID
+                    
+                    COLLECTION_USERS.document(uid).getDocument { snapshot, _ in
+                        guard let data = snapshot?.data() else { return }
+                        let user: TwitterUser = .init(dictionary: data)
+                        messages.append(.init(user: user, dictionary: messageData))
+                        if messages.count == documents.count {
+                            observer.onNext(messages)
+                            observer.onCompleted()
+                        }
+                    }
+                }
+            }
+            
+            return Disposables.create()
+        }
+    }
+    
+    func listenRecentMessages() -> Observable<[Message]> {
         return .create { observer in
             
             guard let uid = Auth.auth().currentUser?.uid else { return Disposables.create() }
@@ -19,6 +47,8 @@ class ChatRepositoryImpl: ChatRepository {
             query.order(by: "timestamp", descending: true).addSnapshotListener { snapshot, error in
                 
                 guard let changes = snapshot?.documentChanges else { return }
+                var messages: [Message] = .init()
+                
                 changes.forEach { change in
                     let messageData = change.document.data()
                     let uid = change.document.documentID
@@ -26,7 +56,10 @@ class ChatRepositoryImpl: ChatRepository {
                     COLLECTION_USERS.document(uid).getDocument { snapshot, _ in
                         guard let data = snapshot?.data() else { return }
                         let user: TwitterUser = .init(dictionary: data)
-                        observer.onNext(.init(user: user, dictionary: messageData))
+                        messages.append(.init(user: user, dictionary: messageData))
+                        if messages.count == changes.count {
+                            observer.onNext(messages)
+                        }
                     }
                 }
             }
