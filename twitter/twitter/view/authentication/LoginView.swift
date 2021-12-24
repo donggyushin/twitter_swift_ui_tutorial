@@ -65,7 +65,7 @@ struct LoginView: View {
                 ActivityIndicatorView(isVisible: $viewModel.isLoading, type: .default)
                     .frame(width: 60, height: 60)
                     .foregroundColor(.white)
-            }.present(isPresented: $viewModel.errorToastPresent, type: .toast, position: .top, closeOnTap: true, closeOnTapOutside: true) {
+            }.present(isPresented: $viewModel.errorToastPresent, type: .toast, position: .bottom, closeOnTap: true, closeOnTapOutside: true) {
                 ToastErrorView(message: viewModel.error?.localizedDescription ?? "로그인에 실패하였습니다.")
             }
         }

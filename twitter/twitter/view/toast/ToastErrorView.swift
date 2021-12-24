@@ -14,7 +14,7 @@ struct ToastErrorView: View {
             .foregroundColor(.white)
             .padding()
             .frame(maxWidth: .infinity)
-            .padding(.top, 80)
+            .padding(.bottom, 50)
             .background(.pink)
     }
 }

@@ -60,8 +60,9 @@ class AuthViewModel: ObservableObject {
     }
     
     func registerUser(email: String, password: String, username: String, fullname: String, profileImage: UIImage) {
-        
+        self.isLoading = true
         userRepository.registerUser(email: email, password: password, username: username, fullname: fullname, profileImage: profileImage).subscribe(onNext: { [weak self] result in
+            self?.isLoading = false 
             switch result {
             case .success(let user):
                 self?.userSession = user
