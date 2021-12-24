@@ -9,7 +9,7 @@ import SwiftUI
 import LazyViewSwiftUI
 
 struct SearchView: View {
-    @ObservedObject var viewModel = ViewModelDependency.resolve().searchViewModel
+    @ObservedObject var viewModel = ViewModelDependency.resolve().searchViewModelFactory(.INCLUDE_ME)
     
     var body: some View {
         ScrollView {

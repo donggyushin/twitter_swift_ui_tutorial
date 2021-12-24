@@ -10,7 +10,7 @@ import SwiftUI
 struct NewMessageView: View {
     @Binding var isShowingNewMessageView: Bool
     @Binding var userToChat: TwitterUser?
-    @ObservedObject var viewModel = ViewModelDependency.resolve().searchViewModel
+    @ObservedObject var viewModel = ViewModelDependency.resolve().searchViewModelFactory(.EXCLUDE_ME)
     
     var body: some View {
         ScrollView {

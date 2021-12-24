@@ -96,8 +96,7 @@ class UserRepositoryImpl: UserRepository {
                     observer.onNext(.failure(error))
                 } else {
                     guard let documents = snapshot?.documents else { return }
-                    guard let uid = Auth.auth().currentUser?.uid else { return }
-                    let tweets = documents.map({ TwitterUser(dictionary: $0.data()) }).filter({ $0.id != uid })
+                    let tweets = documents.map({ TwitterUser(dictionary: $0.data()) })
                     observer.onNext(.success(tweets))
                 }
                 observer.onCompleted()

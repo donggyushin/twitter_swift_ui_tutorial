@@ -12,7 +12,7 @@ import UIKit
 
 class SearchViewModelTest: XCTestCase {
     func testInit() {
-        let vm = ViewModelDependency.resolve().searchViewModelTest
+        let vm = ViewModelDependency.resolve().searchViewModelTestFactory(.INCLUDE_ME)
         
         let expectation: XCTestExpectation = .init(description: "testInitExpectation")
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -25,7 +25,7 @@ class SearchViewModelTest: XCTestCase {
     }
     
     func testFilteredUsers() {
-        let vm = ViewModelDependency.resolve().searchViewModelTest
+        let vm = ViewModelDependency.resolve().searchViewModelTestFactory(.EXCLUDE_ME)
         let expectation: XCTestExpectation = .init(description: "testInitExpectation")
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             expectation.fulfill()
