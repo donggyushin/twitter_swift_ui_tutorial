@@ -9,17 +9,15 @@ import SwiftUI
 import LazyViewSwiftUI
 
 struct ConversationListView: View {
-    
-    @State var isShowingNewMessageView = false
-    @State var startChat = false
-    
     @ObservedObject var viewModel: ConversationListViewModel = ViewModelDependency.resolve().conversationListViewModel
     
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
-//            NavigationLink(isActive: $startChat) {
-//                ChatView(user: .init(dictionary: [:]))
-//            } label: {}
+            NavigationLink(isActive: $viewModel.startChat) {
+                if let user = viewModel.userToChat {
+                    ChatView(user: user)
+                }
+            } label: {}
 
             ScrollView {
                 VStack {
@@ -38,7 +36,7 @@ struct ConversationListView: View {
             
             
             Button {
-                self.isShowingNewMessageView.toggle()
+                viewModel.isShowingNewMessageView.toggle()
             } label: {
                 Image(systemName: "envelope")
                     .resizable()
@@ -52,8 +50,8 @@ struct ConversationListView: View {
             .foregroundColor(Color.white)
             .clipShape(Circle())
             .padding()
-            .sheet(isPresented: $isShowingNewMessageView) {
-                NewMessageView(isShowingNewMessageView: $isShowingNewMessageView, startChat: $startChat)
+            .sheet(isPresented: $viewModel.isShowingNewMessageView) {
+                NewMessageView(isShowingNewMessageView: $viewModel.isShowingNewMessageView, userToChat: $viewModel.userToChat)
             }
         }.onAppear {
             viewModel.isViewDisplayed = true

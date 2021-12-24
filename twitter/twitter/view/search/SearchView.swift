@@ -9,17 +9,15 @@ import SwiftUI
 import LazyViewSwiftUI
 
 struct SearchView: View {
-    
-    @State var searchTest: String = ""
     @ObservedObject var viewModel = ViewModelDependency.resolve().searchViewModel
     
     var body: some View {
         ScrollView {
             VStack {
-                SearchBar(text: $searchTest)
+                SearchBar(text: $viewModel.searchText)
                     .padding(.top)
                 VStack {
-                    ForEach(searchTest.isEmpty ? viewModel.users : viewModel.filteredUsers(query: searchTest)) { user in
+                    ForEach(viewModel.searchText.isEmpty ? viewModel.users : viewModel.filteredUsers()) { user in
                         NavigationLink {
                             LazyView(ProfileView(user: user))
                         } label: {

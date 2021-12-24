@@ -11,6 +11,7 @@ import RxSwift
 
 class SearchViewModel: ObservableObject {
     @Published var users: [TwitterUser] = []
+    @Published var searchText: String = ""
     
     private let userRepository: UserRepository
     private let disposeBag = DisposeBag()
@@ -31,8 +32,8 @@ class SearchViewModel: ObservableObject {
         }).disposed(by: disposeBag)
     }
     
-    func filteredUsers(query: String) -> [TwitterUser] {
-        let lowerCasesedQuery = query.lowercased()
+    func filteredUsers() -> [TwitterUser] {
+        let lowerCasesedQuery = searchText.lowercased()
         return users.filter({ $0.fullname.lowercased().contains(lowerCasesedQuery) || $0.username.lowercased().contains(lowerCasesedQuery) })
     }
 }

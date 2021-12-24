@@ -8,21 +8,20 @@
 import SwiftUI
 
 struct NewMessageView: View {
-    @State var searchTest: String = ""
     @Binding var isShowingNewMessageView: Bool
-    @Binding var startChat: Bool
+    @Binding var userToChat: TwitterUser?
     @ObservedObject var viewModel = ViewModelDependency.resolve().searchViewModel
     
     var body: some View {
         ScrollView {
-            SearchBar(text: $searchTest)
+            SearchBar(text: $viewModel.searchText)
                 .padding(.top)
             VStack {
                 ForEach(viewModel.users) { user in
                     Button {
                         self.isShowingNewMessageView.toggle()
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                            self.startChat.toggle()
+                            self.userToChat = user
                         }
                     } label: {
                         UserCell(user: user)
@@ -37,6 +36,6 @@ struct NewMessageView: View {
 
 struct NewMessageView_Previews: PreviewProvider {
     static var previews: some View {
-        NewMessageView(isShowingNewMessageView: .constant(true), startChat: .constant(false))
+        NewMessageView(isShowingNewMessageView: .constant(true), userToChat: .constant(nil))
     }
 }

@@ -39,15 +39,13 @@ class ChatRepositoryImpl: ChatRepository {
         }
     }
     
-    func listenRecentMessages() -> Observable<[Message]> {
+    func listenRecentMessages() -> Observable<Message> {
         return .create { observer in
             
             guard let uid = Auth.auth().currentUser?.uid else { return Disposables.create() }
             let query = COLLECTION_MESSAGES.document(uid).collection(self.RECENT_MESSAGES)
             query.order(by: "timestamp", descending: true).addSnapshotListener { snapshot, error in
-                
                 guard let changes = snapshot?.documentChanges else { return }
-                var messages: [Message] = .init()
                 
                 changes.forEach { change in
                     let messageData = change.document.data()
@@ -56,10 +54,7 @@ class ChatRepositoryImpl: ChatRepository {
                     COLLECTION_USERS.document(uid).getDocument { snapshot, _ in
                         guard let data = snapshot?.data() else { return }
                         let user: TwitterUser = .init(dictionary: data)
-                        messages.append(.init(user: user, dictionary: messageData))
-                        if messages.count == changes.count {
-                            observer.onNext(messages)
-                        }
+                        observer.onNext(.init(user: user, dictionary: messageData))
                     }
                 }
             }
