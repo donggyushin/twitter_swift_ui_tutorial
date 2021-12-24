@@ -13,7 +13,7 @@ struct Message: Identifiable {
     let user: TwitterUser
     let toId: String
     let fromId: String
-    let isFromCurrentUser: Bool
+    var isFromCurrentUser: Bool
     let timestamp: Timestamp
     
     var chatPartnerId: String { isFromCurrentUser ? toId : fromId }

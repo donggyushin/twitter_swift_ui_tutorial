@@ -21,7 +21,7 @@ class SearchViewModelTest: XCTestCase {
         
         wait(for: [expectation], timeout: 5)
         
-        XCTAssertEqual(0, vm.users.count)
+        XCTAssertEqual(1, vm.users.count)
     }
     
     func testFilteredUsers() {
@@ -31,6 +31,8 @@ class SearchViewModelTest: XCTestCase {
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 5)
-        XCTAssertEqual(vm.filteredUsers(query: "asd").count, 0)
+        
+        
+        XCTAssertEqual(vm.filteredUsers(query: "5").count, 0)
     }
 }

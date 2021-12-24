@@ -13,7 +13,9 @@ class UserRepositoryTest: UserRepository {
     func fetchUsers() -> Observable<Result<[TwitterUser], Error>> {
         return .create { observer in
             
-            observer.onNext(.success([]))
+            let user: TwitterUser = .init(dictionary: ["username": "asd", "fullname": "asd"])
+            
+            observer.onNext(.success([user]))
             observer.onCompleted()
             
             return Disposables.create()
