@@ -67,7 +67,8 @@ API를 Firestore 및 데이터 모델과 통합하는 작업, 유저를 팔로�
 ```
 xcov -p twitter/twitter.xcodeproj -s twitter -o xcov_output
 ```
-<img width="961" alt="스크린샷 2021-12-23 오후 6 14 16" src="https://user-images.githubusercontent.com/34573243/147217549-88b0d9fa-19c3-4cf7-8ca9-5bcdac52d059.png">
+![스크린샷 2021-12-24 오후 2 08 54](https://user-images.githubusercontent.com/34573243/147319059-5f351412-9f89-4a2e-82ec-8e10df837ec0.png)
+
 
 
 
