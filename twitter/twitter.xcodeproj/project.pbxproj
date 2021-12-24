@@ -76,6 +76,7 @@
 		70C350A027709FBB00F37157 /* TweetRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C3509F27709FBB00F37157 /* TweetRepositoryTest.swift */; };
 		70CC37662775A96D0073C3D1 /* ConversationListViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CC37652775A96D0073C3D1 /* ConversationListViewModelTest.swift */; };
 		70CC37692775ACA20073C3D1 /* MessageTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CC37682775ACA20073C3D1 /* MessageTest.swift */; };
+		70CC376B2775AF9A0073C3D1 /* TwitterUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CC376A2775AF9A0073C3D1 /* TwitterUser.swift */; };
 		70E1498627746D9C00D832FE /* UploadTweetViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70E1498527746D9C00D832FE /* UploadTweetViewModelTest.swift */; };
 		70F0652F2747BF5B00412FE3 /* NewTweetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F0652E2747BF5B00412FE3 /* NewTweetView.swift */; };
 		70F065312747C86300412FE3 /* TextAreaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F065302747C86300412FE3 /* TextAreaView.swift */; };
@@ -167,6 +168,7 @@
 		70C3509F27709FBB00F37157 /* TweetRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetRepositoryTest.swift; sourceTree = "<group>"; };
 		70CC37652775A96D0073C3D1 /* ConversationListViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationListViewModelTest.swift; sourceTree = "<group>"; };
 		70CC37682775ACA20073C3D1 /* MessageTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTest.swift; sourceTree = "<group>"; };
+		70CC376A2775AF9A0073C3D1 /* TwitterUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterUser.swift; sourceTree = "<group>"; };
 		70E1498527746D9C00D832FE /* UploadTweetViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadTweetViewModelTest.swift; sourceTree = "<group>"; };
 		70F0652E2747BF5B00412FE3 /* NewTweetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTweetView.swift; sourceTree = "<group>"; };
 		70F065302747C86300412FE3 /* TextAreaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAreaView.swift; sourceTree = "<group>"; };
@@ -452,6 +454,7 @@
 			isa = PBXGroup;
 			children = (
 				70CC37682775ACA20073C3D1 /* MessageTest.swift */,
+				70CC376A2775AF9A0073C3D1 /* TwitterUser.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -753,6 +756,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70CC376B2775AF9A0073C3D1 /* TwitterUser.swift in Sources */,
 				7033B72D2771F057001B0030 /* TweetActionViewModelTest.swift in Sources */,
 				70CC37662775A96D0073C3D1 /* ConversationListViewModelTest.swift in Sources */,
 				7072071427758C060014A659 /* ChatViewModelTest.swift in Sources */,
