@@ -7,7 +7,9 @@
 
 import Firebase
 
-struct TwitterUser: Identifiable {
+let TWITTER_USER_USERDEFAULTS_KEY = "TWITTER_USER_USERDEFAULTS_KEY"
+
+struct TwitterUser: Identifiable, Codable {
     let id: String
     let username: String
     let profileImageUrl: String
@@ -25,8 +27,31 @@ struct TwitterUser: Identifiable {
         self.profileImageUrl = dictionary["profileImageUrl"] as? String ?? ""
     }
     
-    struct Stats {
+    struct Stats: Codable {
         let followers: Int
         let following: Int
+    }
+    
+    static func getFromUserdefaults() -> [TwitterUser] {
+        var users: [TwitterUser] = []
+        let defaults = UserDefaults.standard
+        if let savedUsers = defaults.object(forKey: TWITTER_USER_USERDEFAULTS_KEY) as? Data {
+            let decoder = JSONDecoder()
+            if let loadedUserArray = try? decoder.decode([TwitterUser].self, from: savedUsers) {
+                users = loadedUserArray
+            }
+        }
+        users = users.filter({ $0.id.isEmpty == false })
+        return users
+    }
+}
+
+extension Array where Element == TwitterUser {
+    func saveToUserDefaults() {
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(self) {
+            let defaults = UserDefaults.standard
+            defaults.set(encoded, forKey: TWITTER_USER_USERDEFAULTS_KEY)
+        }
     }
 }

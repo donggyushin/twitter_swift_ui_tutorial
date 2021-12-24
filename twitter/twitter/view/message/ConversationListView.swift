@@ -9,7 +9,7 @@ import SwiftUI
 import LazyViewSwiftUI
 
 struct ConversationListView: View {
-    @ObservedObject var viewModel: ConversationListViewModel = ViewModelDependency.resolve().conversationListViewModel
+    @ObservedObject var viewModel: ConversationListViewModel = ViewModelDependency.resolve().conversationListViewModelFactory()
     
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
@@ -26,10 +26,12 @@ struct ConversationListView: View {
                             LazyView(ChatView(user: message.user))
                         } label: {
                             ConversationCell(message: message)
-                                .padding()
+                                .padding(.bottom)
+                                .padding(.horizontal)
                         }
                     }
                 }
+                .padding(.top)
             }
             .frame(maxWidth: .infinity)
             .padding(.top, 1)

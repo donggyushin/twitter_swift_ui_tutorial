@@ -14,7 +14,7 @@ class FeedViewModelTest: XCTestCase {
     let disposeBag = DisposeBag()
     
     func testInit() {
-        let viewModel = ViewModelDependency.resolve().feedViewModelTest
+        let viewModel = ViewModelDependency.resolve().feedViewModelTestFactory()
         let tweetRepository = RepositoryDependency.resolve().tweetRepositoryTest
         let expectation: XCTestExpectation = .init(description: "Mock Networking")
         tweetRepository.fetchTweets().subscribe(onNext: { _ in

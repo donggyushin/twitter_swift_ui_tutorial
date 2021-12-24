@@ -17,7 +17,7 @@ struct twitterApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView().environmentObject(ViewModelDependency.resolve().authViewModel)
+            ContentView().environmentObject(ViewModelDependency.resolve().authViewModelFactory())
         }
     }
 }

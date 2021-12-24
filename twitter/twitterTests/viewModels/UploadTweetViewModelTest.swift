@@ -11,7 +11,7 @@ import SwiftUI
 
 class UploadTweetViewModelTest: XCTestCase {
     func testUploadTweet() {
-        let feedView: FeedView = .init(viewModel: ViewModelDependency.resolve().feedViewModelTest)
+        let feedView: FeedView = .init(viewModel: ViewModelDependency.resolve().feedViewModelTestFactory())
         let viewModel = ViewModelDependency.resolve().uploadTweetViewModelFactoryTest(feedView.$viewModel.isShowingNewTweetView)
         viewModel.uploadTweet(caption: "")
         let expectation: XCTestExpectation = .init(description: "")

@@ -8,6 +8,7 @@
 import SwiftUI
 import Firebase
 import RxSwift
+import Combine
 
 class SearchViewModel: ObservableObject {
     
@@ -23,13 +24,27 @@ class SearchViewModel: ObservableObject {
     private let disposeBag = DisposeBag()
     private let configuration: Configuration
     
+    private var subscriber = Set<AnyCancellable>()
+    
     init(userRepository: UserRepository, configuration: Configuration) {
         self.userRepository = userRepository
         self.configuration = configuration
+        getUsersFromUserDefaults()
         fetchUsers()
+        bind()
     }
     
-    func fetchUsers() {
+    private func bind() {
+        $users.sink { users in
+            if users.isEmpty == false { users.saveToUserDefaults() }
+        }.store(in: &subscriber)
+    }
+    
+    private func getUsersFromUserDefaults() {
+        self.users = TwitterUser.getFromUserdefaults()
+    }
+    
+    private func fetchUsers() {
         userRepository.fetchUsers().subscribe(onNext: {[weak self] result in
             switch result {
             case .failure(let error):

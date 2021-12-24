@@ -55,7 +55,7 @@ class ChatRepositoryImpl: ChatRepository {
                         let user: TwitterUser = .init(dictionary: data)
                         messages.append(.init(user: user, dictionary: messageData))
                         if messages.count == changes.count {
-                            messages.sort(by: { $0.timestamp.seconds < $1.timestamp.seconds })
+                            messages.sort(by: { $0.date.timeIntervalSince1970 < $1.date.timeIntervalSince1970 })
                             observer.onNext(messages)
                         }
                     }
@@ -83,7 +83,7 @@ class ChatRepositoryImpl: ChatRepository {
                         let user: TwitterUser = .init(dictionary: data)
                         messages.append(.init(user: user, dictionary: messageData))
                         if changes.count == messages.count {
-                            messages.sort(by: { $0.timestamp.seconds > $1.timestamp.seconds })
+                            messages.sort(by: { $0.date.timeIntervalSince1970 > $1.date.timeIntervalSince1970 })
                             observer.onNext(messages)
                         }
                     }

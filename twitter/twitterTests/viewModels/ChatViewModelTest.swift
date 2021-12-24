@@ -18,7 +18,8 @@ class ChatViewModelTest: XCTestCase {
     ]))
     
     func testSendMessages() {
-        viewModel.sendMessages(messageText: "asd")
+        viewModel.messageText = "asd"
+        viewModel.sendMessages()
     }
     
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FeedView: View {
-    @ObservedObject var viewModel = ViewModelDependency.resolve().feedViewModel
+    @ObservedObject var viewModel = ViewModelDependency.resolve().feedViewModelFactory()
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
             ScrollView(.vertical) {

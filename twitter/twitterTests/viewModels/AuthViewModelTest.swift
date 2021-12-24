@@ -11,7 +11,7 @@ import UIKit
 @testable import twitter
 
 class AuthViewModelTest: XCTestCase {
-    let viewModel: AuthViewModel = ViewModelDependency.resolve().authViewModelTest
+    let viewModel: AuthViewModel = ViewModelDependency.resolve().authViewModelTestFactory()
     
     func testSignOut() {
         viewModel.signOut()

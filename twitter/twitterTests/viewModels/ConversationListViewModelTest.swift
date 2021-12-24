@@ -10,7 +10,7 @@ import XCTest
 import SwiftUI
 
 class ConversationListViewModelTest: XCTestCase {
-    let viewModel: ConversationListViewModel = ViewModelDependency.resolve().conversationListViewModelTest
+    let viewModel: ConversationListViewModel = ViewModelDependency.resolve().conversationListViewModelTestFactory()
     
     func testInit() {
         
@@ -20,7 +20,7 @@ class ConversationListViewModelTest: XCTestCase {
         }
         wait(for: [expectation], timeout: 5)
         
-        XCTAssertEqual(viewModel.recentMessages.count, 0)
+        XCTAssertEqual(viewModel.recentMessages.count, 1)
     }
     
     func testViewAppear() {

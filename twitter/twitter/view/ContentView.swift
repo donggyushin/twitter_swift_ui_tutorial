@@ -12,13 +12,12 @@ import LazyViewSwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var authViewModel: AuthViewModel
-    @ObservedObject var viewModel: ContentViewModel = ViewModelDependency.resolve().contentViewModel
+    @ObservedObject var viewModel: ContentViewModel = ViewModelDependency.resolve().contentViewModelFactory()
     
     var body: some View {
         Group {
             if authViewModel.userSession != nil {
                 NavigationView {
-//                    TabView
                     TabView(selection: $viewModel.currentTab)
                     {
                         FeedView()

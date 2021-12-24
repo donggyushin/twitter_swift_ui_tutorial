@@ -23,6 +23,7 @@ class ConversationListViewModel: ObservableObject {
     
     init(chatRepository: ChatRepository) {
         self.chatRepository = chatRepository
+        getRecentMessagesFromUserdefaults()
         fetchRecentMessages()
         listenRecentMessages()
         bind()
@@ -32,6 +33,14 @@ class ConversationListViewModel: ObservableObject {
         $userToChat.sink { [weak self] user in
             self?.startChat = user != nil
         }.store(in: &subscriber)
+        
+        $recentMessages.sink { messages in
+            if messages.isEmpty == false { messages.saveRecentMessagesToUserDefaults() }
+        }.store(in: &subscriber)
+    }
+    
+    private func getRecentMessagesFromUserdefaults() {
+        self.recentMessages = Message.getRecentMessagesToUserDefaults()
     }
     
     func fetchRecentMessages() {
