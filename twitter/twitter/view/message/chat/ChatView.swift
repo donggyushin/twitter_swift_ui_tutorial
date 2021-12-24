@@ -19,13 +19,13 @@ struct ChatView: View {
     var body: some View {
         VStack {
             ScrollView {
-                ForEach(MOCK_MESSAGES_DATA) { message in
-                    if message.isFromCurrentUser {
-                        MyChatBubble(message: message)
-                    } else {
-                        OtherChatBubble(message: message)
-                    }
-                }
+//                ForEach(MOCK_MESSAGES_DATA) { message in
+//                    if message.isFromCurrentUser {
+//                        MyChatBubble(message: message)
+//                    } else {
+//                        OtherChatBubble(message: message)
+//                    }
+//                }
             }
             MessageInputView(messageText: $messageText, action: { messageText in 
                 viewModel.sendMessages(messageText: messageText)

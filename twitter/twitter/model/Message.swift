@@ -5,14 +5,27 @@
 //  Created by 신동규 on 2021/11/18.
 //
 
-struct MockMessage: Identifiable {
-    let id: Int
-    let imageName: String
-    let message: String
-    let isFromCurrentUser: Bool
-}
+import Firebase
 
-let MOCK_MESSAGES_DATA: [MockMessage] = [
-    .init(id: 0, imageName: "spiderman", message: "Hey What's up", isFromCurrentUser: false),
-    .init(id: 1, imageName: "batman", message: "Hi", isFromCurrentUser: true)
-]
+struct Message: Identifiable {
+    let id: String
+    let text: String
+    let user: TwitterUser
+    let toId: String
+    let fromId: String
+    let isFromCurrentUser: Bool
+    let timestamp: Timestamp
+    
+    var chatPartnerId: String { isFromCurrentUser ? toId : fromId }
+    
+    init(user: TwitterUser, dictionary: [String: Any]) {
+        self.user = user
+        
+        self.text = dictionary["text"] as? String ?? ""
+        self.toId = dictionary["toId"] as? String ?? ""
+        self.fromId = dictionary["fromId"] as? String ?? ""
+        self.isFromCurrentUser = fromId == Auth.auth().currentUser?.uid
+        self.timestamp = dictionary["timestamp"] as? Timestamp ?? Timestamp(date: Date())
+        self.id = dictionary["id"] as? String ?? ""
+    }
+}
