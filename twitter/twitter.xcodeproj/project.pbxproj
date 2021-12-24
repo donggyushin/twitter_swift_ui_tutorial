@@ -49,6 +49,10 @@
 		706874A52760A0C100C44B32 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706874A42760A0C100C44B32 /* FeedViewModel.swift */; };
 		706874A72760A0DB00C44B32 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706874A62760A0DB00C44B32 /* Tweet.swift */; };
 		706BF95A27464B35002277F8 /* FilterButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706BF95927464B35002277F8 /* FilterButtonsView.swift */; };
+		7072070C2775810B0014A659 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7072070B2775810B0014A659 /* ChatViewModel.swift */; };
+		7072070E277581490014A659 /* ChatRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7072070D277581490014A659 /* ChatRepositoryImpl.swift */; };
+		707207102775846D0014A659 /* ChatRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7072070F2775846D0014A659 /* ChatRepository.swift */; };
+		707207122775848C0014A659 /* ChatRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707207112775848C0014A659 /* ChatRepositoryTest.swift */; };
 		7072FF9D2746302B0074DBD1 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7072FF9C2746302B0074DBD1 /* Message.swift */; };
 		7085ADAA275E1A1500139FC2 /* UploadTweetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7085ADA9275E1A1500139FC2 /* UploadTweetViewModel.swift */; };
 		708F71DA276B396C00EBE84E /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 708F71D9276B396C00EBE84E /* RxSwift */; };
@@ -135,6 +139,10 @@
 		706874A42760A0C100C44B32 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		706874A62760A0DB00C44B32 /* Tweet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		706BF95927464B35002277F8 /* FilterButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterButtonsView.swift; sourceTree = "<group>"; };
+		7072070B2775810B0014A659 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		7072070D277581490014A659 /* ChatRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRepositoryImpl.swift; sourceTree = "<group>"; };
+		7072070F2775846D0014A659 /* ChatRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRepository.swift; sourceTree = "<group>"; };
+		707207112775848C0014A659 /* ChatRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRepositoryTest.swift; sourceTree = "<group>"; };
 		7072FF9C2746302B0074DBD1 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		7085ADA9275E1A1500139FC2 /* UploadTweetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadTweetViewModel.swift; sourceTree = "<group>"; };
 		708F71DB276B3A4700EBE84E /* TweetRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetRepositoryImpl.swift; sourceTree = "<group>"; };
@@ -307,6 +315,7 @@
 				7085ADA9275E1A1500139FC2 /* UploadTweetViewModel.swift */,
 				706874A42760A0C100C44B32 /* FeedViewModel.swift */,
 				704F245127636FC1000C6C6A /* TweetActionViewModel.swift */,
+				7072070B2775810B0014A659 /* ChatViewModel.swift */,
 			);
 			path = viewModel;
 			sourceTree = "<group>";
@@ -375,6 +384,9 @@
 				708F71DD276B3B7700EBE84E /* TweetRepository.swift */,
 				705FC819276B68A600584274 /* UserRepositoryTest.swift */,
 				70C3509F27709FBB00F37157 /* TweetRepositoryTest.swift */,
+				7072070D277581490014A659 /* ChatRepositoryImpl.swift */,
+				7072070F2775846D0014A659 /* ChatRepository.swift */,
+				707207112775848C0014A659 /* ChatRepositoryTest.swift */,
 			);
 			path = repositories;
 			sourceTree = "<group>";
@@ -674,7 +686,9 @@
 				70B47E7727463EE200E8ED0F /* ProfileHeaderView.swift in Sources */,
 				7028237D27451A0500A81745 /* FeedView.swift in Sources */,
 				706874A72760A0DB00C44B32 /* Tweet.swift in Sources */,
+				707207122775848C0014A659 /* ChatRepositoryTest.swift in Sources */,
 				7028235027450D6100A81745 /* twitterApp.swift in Sources */,
+				707207102775846D0014A659 /* ChatRepository.swift in Sources */,
 				70F0652F2747BF5B00412FE3 /* NewTweetView.swift in Sources */,
 				708F71DE276B3B7700EBE84E /* TweetRepository.swift in Sources */,
 				705FC81D276B69F400584274 /* CustomError.swift in Sources */,
@@ -698,10 +712,12 @@
 				70AECE17276B3782003F61AF /* RepositoryDependency.swift in Sources */,
 				70B47E7A27463F3300E8ED0F /* FollowingFollwerView.swift in Sources */,
 				706874A52760A0C100C44B32 /* FeedViewModel.swift in Sources */,
+				7072070C2775810B0014A659 /* ChatViewModel.swift in Sources */,
 				7072FF9D2746302B0074DBD1 /* Message.swift in Sources */,
 				70F728B527454331000A3672 /* ConversationListView.swift in Sources */,
 				705FC81A276B68A600584274 /* UserRepositoryTest.swift in Sources */,
 				7057476F274D09A1003AE7F1 /* AuthViewModel.swift in Sources */,
+				7072070E277581490014A659 /* ChatRepositoryImpl.swift in Sources */,
 				70BF128C2746454B00A21B98 /* ProfileHeaderActionButtonsView.swift in Sources */,
 				703F22BE2748BE6700A3629C /* PasswordTextFieldView.swift in Sources */,
 				7015A37327562A1E009D2EFC /* ProfileViewModel.swift in Sources */,

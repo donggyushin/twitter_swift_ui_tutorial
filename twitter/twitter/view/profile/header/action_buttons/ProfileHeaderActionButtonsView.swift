@@ -39,7 +39,7 @@ struct ProfileHeaderActionButtonsView: View {
                 }
                 
                 NavigationLink {
-                    ChatView()
+                    ChatView(user: viewModel.user)
                 } label: {
                     Text("Message")
                         .frame(width: (screenWidth - 60) / 2, height: 40)

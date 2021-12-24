@@ -14,23 +14,25 @@ struct ConversationListView: View {
     
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
-            NavigationLink(isActive: $startChat) {
-                ChatView()
-            } label: {}
+//            NavigationLink(isActive: $startChat) {
+//                ChatView(user: .init(dictionary: [:]))
+//            } label: {}
 
             ScrollView {
                 VStack {
                     ForEach(0..<20) { _ in
-                        NavigationLink {
-                            ChatView()
-                        } label: {
-                            ConversationCell()
-                                .padding()
-                        }
+//                        NavigationLink {
+//                            ChatView(user: .init(dictionary: [:]))
+//                        } label: {
+//                            ConversationCell()
+//                                .padding()
+//                        }
                     }
                 }
             }
+            .frame(maxWidth: .infinity)
             .padding(.top, 1)
+            
             
             Button {
                 self.isShowingNewMessageView.toggle()
