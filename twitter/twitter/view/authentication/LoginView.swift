@@ -7,6 +7,8 @@
 
 import SwiftUI
 import UIKit
+import SSToastMessage
+import ActivityIndicatorView
 
 struct LoginView: View {
     
@@ -49,7 +51,7 @@ struct LoginView: View {
                             .frame(width: screenWidth - 40, height: 40)
                             .background(.white)
                             .cornerRadius(20)
-                    }
+                    }.disabled(viewModel.isLoading)
 
                     Spacer()
                     
@@ -59,6 +61,12 @@ struct LoginView: View {
                     }
                 }
                 .background(background_color)
+                
+                ActivityIndicatorView(isVisible: $viewModel.isLoading, type: .default)
+                    .frame(width: 60, height: 60)
+                    .foregroundColor(.white)
+            }.present(isPresented: $viewModel.errorToastPresent, type: .toast, position: .top, closeOnTap: true, closeOnTapOutside: true) {
+                ToastErrorView(message: viewModel.error?.localizedDescription ?? "로그인에 실패하였습니다.")
             }
         }
     }

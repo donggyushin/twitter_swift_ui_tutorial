@@ -11,6 +11,15 @@
         }
       },
       {
+        "package": "ActivityIndicatorView",
+        "repositoryURL": "https://github.com/exyte/ActivityIndicatorView",
+        "state": {
+          "branch": null,
+          "revision": "9ddf7c4290ed79d6d09a58fb644a3cc2ff751542",
+          "version": "1.0.1"
+        }
+      },
+      {
         "package": "BoringSSL-GRPC",
         "repositoryURL": "https://github.com/firebase/boringssl-SwiftPM.git",
         "state": {
@@ -125,6 +134,15 @@
           "branch": "main",
           "revision": "b48f2e9536cd985d912126709b97bd743e58c8fc",
           "version": null
+        }
+      },
+      {
+        "package": "SSToastMessage",
+        "repositoryURL": "https://github.com/SimformSolutionsPvtLtd/SSToastMessage",
+        "state": {
+          "branch": null,
+          "revision": "6f8c15ae5347655a22651c94ed29a651c172e6ce",
+          "version": "1.0.0"
         }
       },
       {

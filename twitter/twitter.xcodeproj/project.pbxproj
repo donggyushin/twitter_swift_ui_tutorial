@@ -57,6 +57,9 @@
 		7072FF9D2746302B0074DBD1 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7072FF9C2746302B0074DBD1 /* Message.swift */; };
 		7085ADAA275E1A1500139FC2 /* UploadTweetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7085ADA9275E1A1500139FC2 /* UploadTweetViewModel.swift */; };
 		708AAC6527762D22002B1D37 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708AAC6427762D22002B1D37 /* ContentViewModel.swift */; };
+		708AAC6827763B70002B1D37 /* ToastErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708AAC6727763B70002B1D37 /* ToastErrorView.swift */; };
+		708AAC6B27763C82002B1D37 /* SSToastMessage in Frameworks */ = {isa = PBXBuildFile; productRef = 708AAC6A27763C82002B1D37 /* SSToastMessage */; };
+		708AAC6E27763F8C002B1D37 /* ActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = 708AAC6D27763F8C002B1D37 /* ActivityIndicatorView */; };
 		708F71DA276B396C00EBE84E /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 708F71D9276B396C00EBE84E /* RxSwift */; };
 		708F71DC276B3A4700EBE84E /* TweetRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708F71DB276B3A4700EBE84E /* TweetRepositoryImpl.swift */; };
 		708F71DE276B3B7700EBE84E /* TweetRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708F71DD276B3B7700EBE84E /* TweetRepository.swift */; };
@@ -153,6 +156,7 @@
 		7072FF9C2746302B0074DBD1 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		7085ADA9275E1A1500139FC2 /* UploadTweetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadTweetViewModel.swift; sourceTree = "<group>"; };
 		708AAC6427762D22002B1D37 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		708AAC6727763B70002B1D37 /* ToastErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastErrorView.swift; sourceTree = "<group>"; };
 		708F71DB276B3A4700EBE84E /* TweetRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetRepositoryImpl.swift; sourceTree = "<group>"; };
 		708F71DD276B3B7700EBE84E /* TweetRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetRepository.swift; sourceTree = "<group>"; };
 		709B914B27759153006FC958 /* ConversationListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationListViewModel.swift; sourceTree = "<group>"; };
@@ -202,11 +206,13 @@
 				70A1768D2769E72900067973 /* LazyViewSwiftUI in Frameworks */,
 				70055514274BBD1D0009994F /* FirebaseStorageSwift-Beta in Frameworks */,
 				70055500274BBD1D0009994F /* FirebaseFirestoreCombine-Community in Frameworks */,
+				708AAC6B27763C82002B1D37 /* SSToastMessage in Frameworks */,
 				708F71DA276B396C00EBE84E /* RxSwift in Frameworks */,
 				70055510274BBD1D0009994F /* FirebaseStorage in Frameworks */,
 				70055508274BBD1D0009994F /* FirebaseInAppMessaging-Beta in Frameworks */,
 				70A546C02750D6F60027D210 /* Kingfisher in Frameworks */,
 				70055502274BBD1D0009994F /* FirebaseFirestoreSwift-Beta in Frameworks */,
+				708AAC6E27763F8C002B1D37 /* ActivityIndicatorView in Frameworks */,
 				70055504274BBD1D0009994F /* FirebaseFunctions in Frameworks */,
 				700554FC274BBD1D0009994F /* FirebaseAuthCombine-Community in Frameworks */,
 				7005550A274BBD1D0009994F /* FirebaseInAppMessagingSwift-Beta in Frameworks */,
@@ -308,6 +314,7 @@
 		702823792745185A00A81745 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				708AAC6627763B5A002B1D37 /* toast */,
 				70FA365B274809C500AD322E /* authentication */,
 				70B47E7327463E1700E8ED0F /* profile */,
 				70F728B82745440A000A3672 /* global */,
@@ -390,6 +397,14 @@
 				706BF95927464B35002277F8 /* FilterButtonsView.swift */,
 			);
 			path = filter_buttons;
+			sourceTree = "<group>";
+		};
+		708AAC6627763B5A002B1D37 /* toast */ = {
+			isa = PBXGroup;
+			children = (
+				708AAC6727763B70002B1D37 /* ToastErrorView.swift */,
+			);
+			path = toast;
 			sourceTree = "<group>";
 		};
 		70AECE10276B35C1003F61AF /* repositories */ = {
@@ -576,6 +591,8 @@
 				70A546BF2750D6F60027D210 /* Kingfisher */,
 				70A1768C2769E72900067973 /* LazyViewSwiftUI */,
 				708F71D9276B396C00EBE84E /* RxSwift */,
+				708AAC6A27763C82002B1D37 /* SSToastMessage */,
+				708AAC6D27763F8C002B1D37 /* ActivityIndicatorView */,
 			);
 			productName = twitter;
 			productReference = 7028234C27450D6100A81745 /* twitter.app */;
@@ -654,6 +671,8 @@
 				70A546BE2750D6F60027D210 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				70A1768B2769E72900067973 /* XCRemoteSwiftPackageReference "Lazy-View-SwiftUI" */,
 				708F71D8276B396C00EBE84E /* XCRemoteSwiftPackageReference "RxSwift" */,
+				708AAC6927763C82002B1D37 /* XCRemoteSwiftPackageReference "SSToastMessage" */,
+				708AAC6C27763F8B002B1D37 /* XCRemoteSwiftPackageReference "ActivityIndicatorView" */,
 			);
 			productRefGroup = 7028234D27450D6100A81745 /* Products */;
 			projectDirPath = "";
@@ -729,6 +748,7 @@
 				70A546C22750D7640027D210 /* SearchViewModel.swift in Sources */,
 				708AAC6527762D22002B1D37 /* ContentViewModel.swift in Sources */,
 				702AA03E27623B79000D57F6 /* TweetActionsView.swift in Sources */,
+				708AAC6827763B70002B1D37 /* ToastErrorView.swift in Sources */,
 				70C350A027709FBB00F37157 /* TweetRepositoryTest.swift in Sources */,
 				70F728C6274554BA000A3672 /* OtherChatBubble.swift in Sources */,
 				704F245227636FC1000C6C6A /* TweetActionViewModel.swift in Sources */,
@@ -1118,6 +1138,22 @@
 				minimumVersion = 8.0.0;
 			};
 		};
+		708AAC6927763C82002B1D37 /* XCRemoteSwiftPackageReference "SSToastMessage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SimformSolutionsPvtLtd/SSToastMessage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		708AAC6C27763F8B002B1D37 /* XCRemoteSwiftPackageReference "ActivityIndicatorView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/exyte/ActivityIndicatorView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		708F71D8276B396C00EBE84E /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift";
@@ -1214,6 +1250,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 700554F8274BBD1D0009994F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = "FirebaseStorageSwift-Beta";
+		};
+		708AAC6A27763C82002B1D37 /* SSToastMessage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 708AAC6927763C82002B1D37 /* XCRemoteSwiftPackageReference "SSToastMessage" */;
+			productName = SSToastMessage;
+		};
+		708AAC6D27763F8C002B1D37 /* ActivityIndicatorView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 708AAC6C27763F8B002B1D37 /* XCRemoteSwiftPackageReference "ActivityIndicatorView" */;
+			productName = ActivityIndicatorView;
 		};
 		708F71D9276B396C00EBE84E /* RxSwift */ = {
 			isa = XCSwiftPackageProductDependency;
