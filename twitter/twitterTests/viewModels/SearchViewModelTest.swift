@@ -31,8 +31,8 @@ class SearchViewModelTest: XCTestCase {
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 5)
+        vm.searchText = "5"
         
-        
-        XCTAssertEqual(vm.filteredUsers(query: "5").count, 0)
+        XCTAssertEqual(vm.filteredUsers().count, 0)
     }
 }
