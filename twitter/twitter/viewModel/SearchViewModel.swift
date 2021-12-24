@@ -30,4 +30,9 @@ class SearchViewModel: ObservableObject {
             }
         }).disposed(by: disposeBag)
     }
+    
+    func filteredUsers(query: String) -> [TwitterUser] {
+        let lowerCasesedQuery = query.lowercased()
+        return users.filter({ $0.fullname.lowercased().contains(lowerCasesedQuery) || $0.username.lowercased().contains(lowerCasesedQuery) })
+    }
 }
