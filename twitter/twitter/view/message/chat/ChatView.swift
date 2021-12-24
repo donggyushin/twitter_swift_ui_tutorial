@@ -31,7 +31,7 @@ struct ChatView: View {
                 viewModel.sendMessages(messageText: messageText)
             })
                 .padding()
-        }
+        }.navigationTitle(viewModel.user.username)
     }
 }
 

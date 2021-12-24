@@ -6,11 +6,14 @@
 //
 
 import SwiftUI
+import LazyViewSwiftUI
 
 struct ConversationListView: View {
     
     @State var isShowingNewMessageView = false
     @State var startChat = false
+    
+    @ObservedObject var viewModel: ConversationListViewModel = ViewModelDependency.resolve().conversationListViewModel
     
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
@@ -20,13 +23,13 @@ struct ConversationListView: View {
 
             ScrollView {
                 VStack {
-                    ForEach(0..<20) { _ in
-//                        NavigationLink {
-//                            ChatView(user: .init(dictionary: [:]))
-//                        } label: {
-//                            ConversationCell()
-//                                .padding()
-//                        }
+                    ForEach(viewModel.recentMessages) { message in
+                        NavigationLink {
+                            LazyView(ChatView(user: message.user))
+                        } label: {
+                            ConversationCell(message: message)
+                                .padding()
+                        }
                     }
                 }
             }

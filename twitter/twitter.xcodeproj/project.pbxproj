@@ -59,6 +59,7 @@
 		708F71DA276B396C00EBE84E /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 708F71D9276B396C00EBE84E /* RxSwift */; };
 		708F71DC276B3A4700EBE84E /* TweetRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708F71DB276B3A4700EBE84E /* TweetRepositoryImpl.swift */; };
 		708F71DE276B3B7700EBE84E /* TweetRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708F71DD276B3B7700EBE84E /* TweetRepository.swift */; };
+		709B914C27759153006FC958 /* ConversationListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709B914B27759153006FC958 /* ConversationListViewModel.swift */; };
 		70A1768D2769E72900067973 /* LazyViewSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 70A1768C2769E72900067973 /* LazyViewSwiftUI */; };
 		70A546C02750D6F60027D210 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 70A546BF2750D6F60027D210 /* Kingfisher */; };
 		70A546C22750D7640027D210 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A546C12750D7640027D210 /* SearchViewModel.swift */; };
@@ -149,6 +150,7 @@
 		7085ADA9275E1A1500139FC2 /* UploadTweetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadTweetViewModel.swift; sourceTree = "<group>"; };
 		708F71DB276B3A4700EBE84E /* TweetRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetRepositoryImpl.swift; sourceTree = "<group>"; };
 		708F71DD276B3B7700EBE84E /* TweetRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetRepository.swift; sourceTree = "<group>"; };
+		709B914B27759153006FC958 /* ConversationListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationListViewModel.swift; sourceTree = "<group>"; };
 		70A546C12750D7640027D210 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		70A546C32750D7F00027D210 /* collections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = collections.swift; sourceTree = "<group>"; };
 		70AECE11276B35D3003F61AF /* UserRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryImpl.swift; sourceTree = "<group>"; };
@@ -318,6 +320,7 @@
 				706874A42760A0C100C44B32 /* FeedViewModel.swift */,
 				704F245127636FC1000C6C6A /* TweetActionViewModel.swift */,
 				7072070B2775810B0014A659 /* ChatViewModel.swift */,
+				709B914B27759153006FC958 /* ConversationListViewModel.swift */,
 			);
 			path = viewModel;
 			sourceTree = "<group>";
@@ -722,6 +725,7 @@
 				7057476F274D09A1003AE7F1 /* AuthViewModel.swift in Sources */,
 				7072070E277581490014A659 /* ChatRepositoryImpl.swift in Sources */,
 				70BF128C2746454B00A21B98 /* ProfileHeaderActionButtonsView.swift in Sources */,
+				709B914C27759153006FC958 /* ConversationListViewModel.swift in Sources */,
 				703F22BE2748BE6700A3629C /* PasswordTextFieldView.swift in Sources */,
 				7015A37327562A1E009D2EFC /* ProfileViewModel.swift in Sources */,
 				70AECE14276B3742003F61AF /* UserRepository.swift in Sources */,

@@ -5,10 +5,35 @@
 //  Created by 신동규 on 2021/12/24.
 //
 import Firebase
+import RxSwift
 
 class ChatRepositoryImpl: ChatRepository {
     
     private let RECENT_MESSAGES = "recent-messages"
+    
+    func fetchRecentMessages() -> Observable<Message> {
+        return .create { observer in
+            
+            guard let uid = Auth.auth().currentUser?.uid else { return Disposables.create() }
+            let query = COLLECTION_MESSAGES.document(uid).collection(self.RECENT_MESSAGES)
+            query.order(by: "timestamp", descending: true).addSnapshotListener { snapshot, error in
+                
+                guard let changes = snapshot?.documentChanges else { return }
+                changes.forEach { change in
+                    let messageData = change.document.data()
+                    let uid = change.document.documentID
+                    
+                    COLLECTION_USERS.document(uid).getDocument { snapshot, _ in
+                        guard let data = snapshot?.data() else { return }
+                        let user: TwitterUser = .init(dictionary: data)
+                        observer.onNext(.init(user: user, dictionary: messageData))
+                    }
+                }
+            }
+            return Disposables.create()
+        }
+    }
+    
     
     func sendMessage(messageText: String, to: TwitterUser) {
         guard let currentUid = Auth.auth().currentUser?.uid else { return }
