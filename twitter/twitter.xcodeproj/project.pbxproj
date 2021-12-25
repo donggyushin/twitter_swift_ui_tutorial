@@ -97,6 +97,7 @@
 		70FA365D274809CE00AD322E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70FA365C274809CE00AD322E /* LoginView.swift */; };
 		70FA36602748100900AD322E /* colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70FA365F2748100900AD322E /* colors.swift */; };
 		70FA36622748105700AD322E /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70FA36612748105700AD322E /* TextFieldView.swift */; };
+		70FF3F202776D17E00B0C439 /* ContentViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70FF3F1F2776D17E00B0C439 /* ContentViewModelTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -191,6 +192,7 @@
 		70FA365C274809CE00AD322E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		70FA365F2748100900AD322E /* colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = colors.swift; sourceTree = "<group>"; };
 		70FA36612748105700AD322E /* TextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
+		70FF3F1F2776D17E00B0C439 /* ContentViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModelTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -379,6 +381,7 @@
 				70E1498527746D9C00D832FE /* UploadTweetViewModelTest.swift */,
 				7072071327758C060014A659 /* ChatViewModelTest.swift */,
 				70CC37652775A96D0073C3D1 /* ConversationListViewModelTest.swift */,
+				70FF3F1F2776D17E00B0C439 /* ContentViewModelTest.swift */,
 			);
 			path = viewModels;
 			sourceTree = "<group>";
@@ -780,6 +783,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70FF3F202776D17E00B0C439 /* ContentViewModelTest.swift in Sources */,
 				70CC376B2775AF9A0073C3D1 /* TwitterUser.swift in Sources */,
 				7033B72D2771F057001B0030 /* TweetActionViewModelTest.swift in Sources */,
 				70CC37662775A96D0073C3D1 /* ConversationListViewModelTest.swift in Sources */,
