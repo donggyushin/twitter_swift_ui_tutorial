@@ -56,7 +56,9 @@ struct ConversationListView: View {
                 NewMessageView(isShowingNewMessageView: $viewModel.isShowingNewMessageView, userToChat: $viewModel.userToChat)
             }
         }.onAppear {
-            viewModel.fetchRecentMessages()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.viewModel.fetchRecentMessages()
+            }
             viewModel.isPresent = true
         }.onDisappear {
             viewModel.isPresent = false
