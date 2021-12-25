@@ -24,6 +24,7 @@ API를 Firestore 및 데이터 모델과 통합하는 작업, 유저를 팔로�
 - data model 과 API 를 이용한 상호작용
 - Swift UI 기초 프로그래밍 지식 습득
 - CocoaPod 대신 SwiftPackageManager 사용해보기
+- Cloud Funcstions 로 서버리스 경험해보기
 
 # 무엇을 구현 할 것인가?
 
@@ -39,7 +40,7 @@ API를 Firestore 및 데이터 모델과 통합하는 작업, 유저를 팔로�
 
 # Screen shots
 
-![twitter](https://user-images.githubusercontent.com/34573243/147377172-1e118baf-ec77-4c02-8622-74c2e715707d.png)
+![Group 2](https://user-images.githubusercontent.com/34573243/147377302-ee2ad0b6-10eb-4d39-9f36-106767feccf0.png)
 
 
 # 끄적끄적
